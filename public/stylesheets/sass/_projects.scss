@@ -1,0 +1,41 @@
+#current_api {
+  border-bottom: 1px solid #ABC2C9;
+  margin-bottom: 20px;
+  overflow: hidden;
+
+  label {
+    float: left;
+    font: 14px $header;
+    margin-bottom: 10px;
+    width: 180px;
+  }
+
+  div#api_key_value {
+    display: block;
+    float: left;
+    font-family: $mono;
+  }
+}
+
+#project_name_input {
+  border-bottom: 1px solid #ABC2C9;
+  padding-bottom: 20px;
+}
+
+#project_users_input {
+  border-top: 1px solid #ABC2C9;
+  padding-top: 20px;
+}
+
+.installation_instructions {
+  padding: 30px;
+  margin: 20px -30px -20px;
+  background: #E8F4F8;
+  border-top: 1px solid darken(#E8F4F8, 20%);
+  @include box-shadow(inset 0 1px 0 #fff);
+  @include border-radius(0 0 5px 5px);
+}
+
+ul.projects {
+  @include settings-list;
+}

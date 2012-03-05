@@ -1,0 +1,9 @@
+<h3>
+  <%= link_to 'Create a new project', new_project_path %>
+</h3>
+
+<ul>
+  <% Project.active.each do |project| %>
+    <li><%= link_to project.name, project %></li>
+  <% end %>
+</ul>

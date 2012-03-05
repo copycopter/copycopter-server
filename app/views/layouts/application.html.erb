@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <%= render 'shared/head' -%>
+  </head>
+
+  <body class='<%= body_class -%> <%= yield :extra -%>'>
+    <div id='header' class='wrapper'>
+      <%= render 'shared/header' -%>
+    </div>
+
+    <div id='page-bg'>
+      <div id='content'>
+        <div class='content-header'>
+          <%= yield :header -%>
+        </div>
+
+        <%= yield :subnav -%>
+
+        <%= render 'shared/flashes' %>
+
+        <div id='main-content'>
+          <%= yield -%>
+        </div>
+
+        <div id='bottom-corner'></div>
+      </div>
+    </div>
+
+    <%= render 'shared/footer' %>
+    <%= render 'shared/javascript' %>
+  </body>
+</html>

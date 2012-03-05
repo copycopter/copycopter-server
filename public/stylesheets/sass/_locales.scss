@@ -1,0 +1,59 @@
+ul#locale_dropdown {
+  float: right;
+  list-style: none;
+  z-index: 99;
+  margin: -18px -30px;
+  border-left: 1px solid #ABC2C9;
+  position: relative;
+
+  p.selected {
+    margin-bottom: 0;
+
+    a:link,
+    a:visited {
+      color: black;
+      display: block;
+      padding: 21px 30px;
+      background: rgba(#C8E2F1, .6);
+      text-shadow: 0 1px 0 rgba(#fff, .4);
+
+      &:hover {
+        background: rgba(#C8E2F1, 1);
+        cursor: pointer;
+      }
+    }
+  }
+
+  ul.menu {
+    display: none;
+    list-style: none;
+    background-color: white;
+    border: 1px solid #ABC2C9;
+    margin: 0 -1px;
+    position: absolute;
+    left: 0;
+    width: 115%;
+    @include border-radius(0 3px 3px 3px);
+    @include box-shadow(0 0px 2px #ABC2C9);
+    li {
+      &:first-child a:link, a:visited {
+        @include border-radius(0 3px 0 0);
+      }
+
+      &:last-child a:link, a:visited {
+        @include border-radius(0 0 3px 3px);
+      }
+    }
+
+    a:link, a:visited {
+      display: block;
+      padding: 8px;
+      color: black;
+    }
+
+    a:hover, a:active {
+      text-decoration: none;
+      background-color: #FFFBB8;
+    }
+  }
+}

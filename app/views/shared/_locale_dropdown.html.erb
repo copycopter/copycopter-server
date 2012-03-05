@@ -1,0 +1,18 @@
+<ul id='locale_dropdown'>
+  <li>
+    <p class='selected'>
+      <%= link_to '#' do -%>
+        Locale:
+        <span><%= @locale.key %></span>
+      <% end -%>
+    </p>
+
+    <ul class='menu'>
+      <%= yield :locales %>
+
+      <li>
+        <%= link_to 'Add a new locale...', new_project_locale_path(@project) %>
+      </li>
+    </ul>
+  </li>
+</ul>

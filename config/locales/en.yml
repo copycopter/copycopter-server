@@ -1,0 +1,38 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+en:
+  blurb:
+    draft_html: This text will be displayed in development and staging environments. The <a href="#" class="show_published_version">latest published version</a> will be displayed in production.
+    published_html: This text will be displayed in all environments, including production.
+    first_draft_html: This text will be displayed in development and staging environments. The default text will be displayed in production.
+
+  homes:
+    show:
+      description:
+        call_out_html: Get to da Choppa!
+        edit_html: Quickly edit &amp; format your sites copy
+        header_html: Copycopter lets you edit live <a href='http://en.wikipedia.org/wiki/Copy_(written)'>copy</a> in your web app. Setup is simple and managing copy is easy, flexible and forgiving.
+        main_alt: Copycopter example editing page
+        manage: Easily manage multiple projects
+        reason_1: Web interface enables entering text into a website simple and quick
+        reason_2: Developers save time by not needing to consistently make simple copy changes to the site
+        reason_3: Site owners no longer need to wait on developers
+        save: Save copy without deploying
+
+      heading:
+        header_html: Let the clients do the editing
+        logo_html: Copycopter &ndash; Edit copy in your live web app
+
+      tour:
+        edit:
+          description_html: <p>Once copy is managed by Copycopter, it can be easily edited using a super simple web-based interface.</p><p>Any copy changes in Copycopter are automatically reflected on the live app.</p>
+          header_html: Edit &amp; Publish
+          screenshot: Screenshots showing the Copycopter interface for editing
+
+        header: How it works
+
+        setup:
+          description_html: <p>Copycopter painlessly integrates with your existing Rails app with a few quick steps.</p><p>Adding blurbs from your Rails application is easy. Just add text to your views using the <a href='http://guides.rubyonrails.org/i18n.html'>Rails I18n API</a>.</p>
+          header: Setup
+          screenshot: Screenshots showing Copycopter setup

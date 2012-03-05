@@ -1,0 +1,279 @@
+body.landing_page_new_design {
+  background:
+    url(/images/home/home-body-glow.png) no-repeat scroll center top,
+    url(/images/canvas-bg.jpg) repeat scroll 0 0 #B9D7E1;
+  font: 14px/1.4em $home_body;
+
+  ::selection, ::-moz-selection, ::-webkit-selection  {
+    background:#7DCBE6;
+    color:#fff;
+    text-shadow: 0 1px 0 #64A3B8;
+  }
+
+  #home-wrap {
+    width: 820px;
+    margin: 0 auto;
+    padding: 40px 0 0 0;
+    position: relative;
+    text-align: left;
+  }
+
+  .cloud-entity {
+    width: 100%;
+    position: absolute;
+    background: transparent url(/images/clouds-three.png) 10% top repeat-x ;
+    padding-top: 230px; // this number corresponds to the height of the cloud .png
+
+    .cloud-repeat {
+      width: 100%;
+      height: 1300px;
+      background: transparent url(/images/home/cloud-fade.png) top left repeat-x;
+    }
+  }
+
+  #cloud-entity-1 {
+    top: 250px;
+    background-position: 10% top;
+   }
+
+  #home-heading {
+    text-align: center;
+    background: url(/images/home/divider.png) center bottom no-repeat;
+
+    h1#logo {
+      background: transparent url(/images/home/divider.png) center bottom no-repeat;
+      padding-bottom: 40px;
+
+      a {
+        display: inline-block;
+        width: 285px;
+        height: 71px;
+        background: transparent url(/images/home/copycopter-logo.png) top left no-repeat;
+        text-indent: -9999px;
+      }
+    }
+
+    h2 {
+      font: 800 62px $home_header;
+      padding: 30px 0 30px;
+      margin: -10px -60px 0;
+      background: url(/images/home/home-header-bg.png) center center no-repeat;
+      color: #fff;
+      text-shadow: 0 1px 2px #1b2c31;
+      -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,.5)));
+    }
+  }
+
+  section#main-description {
+    background: transparent url(/images/home/divider.png) center bottom no-repeat;
+    padding-bottom: 40px;
+    @extend .clearfix;
+
+    div#main-image {
+      float: left;
+      width: 560px;
+      margin-left: -120px;
+      margin-top: 58px;
+      position: relative;
+
+      p {
+        color: #3c6a7c;
+        text-shadow: #C8ECFC;
+        font-size: 12px;
+        font-weight: bold;
+
+        &.save {
+          position: absolute;
+          top: 0;
+          left: 0;
+        }
+
+        &.manage {
+          position: absolute;
+          top: -13px;
+          right: -16px;
+          width: 120px;
+        }
+
+        &.edit {
+          position: absolute;
+          bottom: 0;
+          left: 196px;
+          width: 140px;
+        }
+      }
+    }
+
+    section {
+      float: left;
+      width: 360px;
+      margin-top: 60px;
+      margin-right: -60px;
+      padding-left: 60px;
+
+      h3 {
+        font: 18px/26px $home_header;
+        text-shadow: 0 1px 0 #B7EBFB;
+
+        span {
+          font-weight: 700;
+          font-style:italic;
+        }
+
+        a {
+          color: rgba(#1D2C30, .8);
+          font-style: italic;
+
+          &:hover {
+            color: #3D7427;
+            text-decoration: none;
+          }
+        }
+      }
+
+      ul {
+        list-style-position: outside;
+
+        li {
+          margin-bottom: 8px;
+          text-shadow: 0 1px 0 #BBE5F6;
+          color: rgba(#1d2c30, .6);
+        }
+      }
+
+      a.sign-up-button {
+        display: block;
+        border: 1px solid #bc8c19;
+        width: 380px;
+        padding: 18px 0 14px;
+        text-align: center;
+        margin: 50px 0 0 -10px;
+        @include box-shadow(inset 0 1px 0 #fff, 0 1px 4px rgba(#1B2C31, .4));
+        @include linear-gradient(#FCF69D,#ECAC1D);
+        @include border-radius(6px);
+
+        h4 {
+          font: 800 20px $home_header;
+          color:#222;
+          margin-bottom: 4px;
+          text-shadow: 0 1px 0 #FCFF63;
+        }
+
+        p {
+          font-size: 12px;
+          text-shadow: 0 1px 0 #F7D92A;
+          color: #6D5616;
+          margin-bottom: 0;
+        }
+
+        &:hover {
+          text-decoration: none;
+          @include linear-gradient(#FFFDC9,#ECAC1D);
+        }
+
+        &:active {
+          padding: 20px 0 12px;
+          @include linear-gradient(#EDB121,#EDCF64);
+          @include box-shadow(inset 0 1px 0 #F8DA25, 0 1px 2px rgba(#1B2C31, .4));
+        }
+      }
+    }
+  }
+
+  section#tour {
+    clear: both;
+    background: transparent url(/images/home/divider.png) center bottom no-repeat;
+
+    h2 {
+      font: 800 48px $home_header;
+      color: #fff;
+      text-shadow: 0 1px 2px #1b2c31;
+      padding-top: 30px;
+      -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,.7)));
+    }
+
+    h3 {
+      padding-left: 50px;
+      font: 600 20px $home_header;
+      color:#181A1B;
+      text-shadow: 0 1px 0 #CAFFFF;
+    }
+
+    section#setup {
+      @extend .clearfix;
+
+      div {
+        width: 243px;
+        float: left;
+        margin-top: 30px;
+
+        h3 {
+          background: transparent url(/images/home/setup-icon.png) left top no-repeat;
+          padding-top: 9px;
+        }
+
+        p {
+          margin-bottom: 1em;
+          text-shadow: 0 1px 0 #BBE5F6;
+        }
+      }
+
+      img {
+        display: block;
+        float: right;
+        margin-right: -160px;
+      }
+    }
+
+    section#edit {
+      @extend .clearfix;
+      padding-bottom: 20px;
+
+      div {
+        width: 240px;
+        float: right;
+        margin: 20px 16px 0 0;
+
+        h3 {
+          background: transparent url(/images/home/edit-icon.png) left top no-repeat;
+          padding-top: 9px;
+        }
+
+        p {
+          margin-bottom: 1em;
+          text-shadow: 0 1px 0 #BBE5F6;
+        }
+      }
+
+      img {
+        display: block;
+        float: left;
+        margin: -180px 0 30px -120px;
+      }
+    }
+  }
+
+  div#ground {
+    clear: both;
+    padding: 60px 0 87px;
+    text-align: center;
+    text-shadow: 0 1px 0 #B6DCEA;
+    background: transparent url(/images/home/ground.png) left bottom repeat-x;
+
+    h2 {
+      font: 600 24px $home_header;
+      color: #649FBA;
+    }
+
+    p {
+      color: #649FBA;
+    }
+
+    div#grass {
+      width: 809px;
+      height: 57px;
+      margin: 0 auto;
+      background: transparent url(/images/home/grass.png) top left no-repeat;
+    }
+  }
+}

@@ -1,0 +1,36 @@
+<% content_for :title, "Edit #{h @localization.key}" %>
+
+<% content_for :locales do %>
+  <% @localization.alternates.each do |localization| %>
+    <li>
+      <%= link_to localization.locale.key,
+            new_localization_version_path(localization) %>
+    </li>
+  <% end -%>
+<% end %>
+
+<% content_for :header do %>
+  <h2>
+    <%= link_to @project.name, @project %>
+    <span>&gt;</span>
+    <strong><%=h @localization.key %></strong>
+  </h2>
+
+  <%= render 'shared/locale_dropdown', :locales => @project.locales %>
+<% end -%>
+
+<%= semantic_form_for [@localization, @version] do |form| %>
+  <%= render 'form', :form => form, :version => @version,
+        :localization => @localization %>
+
+  <%= form.buttons do %>
+    <%= form.commit_button 'Save Blurb' %>
+
+    <%= link_to project_blurb_path(@project, @localization.blurb),
+          :method  => 'delete',
+          :confirm => 'Delete this blurb and all associated content?',
+          :id => 'remove_blurb' do %>
+      <span class='delete_item'>Remove blurb</span>
+    <% end -%>
+  <% end %>
+<% end -%>

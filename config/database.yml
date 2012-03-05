@@ -1,0 +1,8 @@
+development: &default
+  adapter: postgresql
+  database: copycopter_development
+  min_messages: WARNING
+
+test: &test
+  <<: *default
+  database: copycopter_test

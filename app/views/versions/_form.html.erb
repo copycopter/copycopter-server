@@ -1,0 +1,51 @@
+<%= form.inputs do %>
+  <%= form.input :published, :as => :radio,
+        :collection => [['Draft', false], ['Publish', true]],
+        :wrapper_html => {
+          :style => version.published? ? 'display: none' : ''
+        } %>
+  <% if version.published? %>
+    <li class='published'>Published</li>
+    <li class='explanation'><%= t 'blurb.published_html' %></li>
+  <% elsif localization.published_content? %>
+    <li class='explanation'><%= t 'blurb.draft_html' %></li>
+  <% else %>
+    <li class='explanation'><%= t 'blurb.first_draft_html' %></li>
+  <% end %>
+
+  <li class='published_version' style='display: none'>
+    <pre><%= localization.published_content %></pre>
+  </li>
+
+  <%= form.input :content %>
+
+  <li id='editor_mode'>
+    <%= link_to 'Edit as HTML', '#', :id => 'edit_html' %>
+    <%= link_to 'Edit in simple mode', '#', :id => 'edit_simple',
+          :style => 'display: none' %>
+  </li>
+<% end %>
+
+<%= hidden_field_tag 'prefer_html', prefer_html? %>
+
+<% content_for :javascript do %>
+  <script type='text/javascript'>
+    $(function () {
+      Editor.start({
+        css: <%== Yajl::Encoder.encode(stylesheet_path('wysiwyg')) %>,
+
+        <% if localization.published_content? %>
+          draftExplanation: <%= raw Yajl::Encoder.encode(t('blurb.draft_html')) %>,
+        <% else %>
+          draftExplanation: <%= raw Yajl::Encoder.encode(t('blurb.first_draft_html')) %>,
+        <% end %>
+
+        <% if prefer_html? %>
+          preferHtml: true,
+        <% end -%>
+
+        publishedExplanation: <%= raw Yajl::Encoder.encode(t('blurb.published_html')) %>
+      });
+    });
+  </script>
+<% end -%>

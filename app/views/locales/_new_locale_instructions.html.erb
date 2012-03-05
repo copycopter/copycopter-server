@@ -1,0 +1,39 @@
+<div>
+  <h3>Adding new locales to Copycopter</h3>
+  <p>
+    Copycopter uses the Rails
+    <%= link_to 'I18n API', "http://rdoc.info/github/svenfuchs/i18n/master/frames" %>
+    so adding new locales is as easy as it is in your Rails app.
+  </p>
+
+  <p>Please follow the instructions below to add your next locale.</p>
+</div>
+
+<div class="installation_instructions">
+  <h3>Adding a new locale to your Rails app</h3>
+
+  <ol>
+    <li>
+      Create a new file for the locale:
+      <pre># config/locales/fr.yml
+fr:
+  hello: Bonjour, tout le monde!</pre>
+    </li>
+    <li>
+      You'll want to allow users to choose a locale.  See the
+      <a href="http://guides.rubyonrails.org/i18n.html#setting-and-passing-the-locale">Setting and Passing the Locale</a> section
+      of the
+      <a href="http://guides.rubyonrails.org/i18n.html">Rails Internationalization Guide</a>
+      for more details.
+    </li>
+  </ol>
+</div>
+<div class="installation_instructions">
+  <h3>Making Copycopter aware of the locale</h3>
+  <p>
+    Run your application in development mode, and visit any page.
+    The Copycopter client will automatically upload any new locales.
+    That's it!  You can now see your locales from the Copycopter interface,
+    and edit copy in multiple locales.  Enjoy!
+  </p>
+</div>

@@ -1,0 +1,84 @@
+<% content_for :title, 'Blurbs' %>
+
+<% content_for :locales do %>
+  <% @project.locales.enabled_in_order.each do |locale| -%>
+    <li>
+      <%= link_to locale.key, project_path(@project, :locale_id => locale.id) %>
+    </li>
+  <% end -%>
+<% end %>
+
+<% content_for :header do %>
+  <h2><strong><%= @project.name %></strong></h2>
+
+  <%= render 'shared/locale_dropdown' %>
+<% end %>
+
+<% if @localizations.empty? -%>
+  <div id='empty'>
+    <h3>You haven&rsquo;t added any blurbs to your project yet.</h3>
+    <p>Please follow the instructions below to add your first blurb, and refresh this page when you&rsquo;re ready.</p>
+  </div>
+
+  <%= render 'projects/installation_instructions', :project => @project %>
+  <%= render 'blurbs/new_blurb_instructions', :project => @project %>
+<% else -%>
+  <div id='start_search'>
+    <h3>Type the first few words of the text you&rsquo;d like to edit.</h3>
+    <p>Results will show up as you type; so the more you type the more refined your results will be. </p>
+  </div>
+
+  <div id='blurb_search' class='start'>
+    <fieldset class='inputs'>
+      <label for='search_blurbs'>Search for the text you're looking to replace</label>
+      <input type='text' id='search_blurbs' class='prefilled' />
+    </fieldset>
+  </div>
+
+  <div id='no_results' style='display: none'>
+    <h3>No results matched your search.</h3>
+    <p>Try typing the first few words of the text you&rsquo;d like to edit.</p>
+  </div>
+
+  <ul class='blurbs-list'>
+    <li>
+    </li>
+  </ul>
+
+  <script type='text/template' id='blurbTemplate'>
+    <a href='#'>
+      <p></p>
+      <h4 class='projectname'></h4>
+    </a>
+  </script>
+
+  <div id='view_all'><a href='#'>View all <%= pluralize(@localizations.size, 'blurb') %></a></div>
+
+  <% content_for :javascript do -%>
+    <script type='text/javascript'>
+      $(document).ready(function () {
+        var template = $('#blurbTemplate').html();
+        $('.blurbs-list > li').incrementalSearch({
+          blankSlate: '#start_search',
+          items:
+            <% cache :action_suffix => "#{@project.etag}_#{@locale.key}_json" do -%>
+              <%= json @localizations %>,
+            <% end -%>
+          noResults: '#no_results',
+          queryInput: '#search_blurbs',
+          render: function (item) {
+            var url = '/localizations/' + item.id + '/versions/new';
+            var li = $('<li>').html(template);
+              li.find('p').text(item.draft_content);
+              li.find('h4').text(item.key);
+              li.find('a').attr('href', url);
+            return li;
+          },
+          search: ['key', 'draft_content'],
+          searchContainter: '#blurb_search',
+          viewAll: '#view_all a'
+        });
+      });
+    </script>
+  <% end -%>
+<% end -%>

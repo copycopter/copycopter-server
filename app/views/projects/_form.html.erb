@@ -1,0 +1,7 @@
+<%= form.inputs do %>
+  <%= form.input :name %>
+
+  <% if project.persisted? -%>
+    <%= form.input :archived, :hint => t('project.archived.hint', :default => "Archived project don't count against your project total. You cannot create or edit content.") %>
+  <% end -%>
+<% end %>

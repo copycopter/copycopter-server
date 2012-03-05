@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <%= render 'shared/head' -%>
+  </head>
+
+  <body class='<%= body_class -%> <%= yield :extra -%>'>
+    <%= yield -%>
+    <%= render 'shared/javascript' %>
+  </body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <%= render 'shared/head' -%>
+  </head>
+
+  <body class='<%= body_class -%> <%= yield :extra -%>'>
+    <div id='header' class='wrapper'>
+      <%= render 'shared/header' -%>
+    </div>
+
+    <div id='dashboard' class='wrapper'>
+      <%= render 'shared/flashes' %>
+
+      <%= yield -%>
+     </div>
+
+    <%= render 'shared/footer' %>
+    <%= render 'shared/javascript' %>
+  </body>
+</html>
+

@@ -1,0 +1,7 @@
+<div id='flash'>
+  <% [:success, :error, :notice, :failure, :alert].each do |key| -%>
+    <% if flash.key?(key) -%>
+      <div id='flash_<%= key %>'><p><%=h flash[key] %></p></div>
+    <% end -%>
+  <% end -%>
+</div>

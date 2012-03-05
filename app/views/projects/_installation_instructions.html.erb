@@ -1,0 +1,15 @@
+<div class='installation_instructions'>
+  <h3>Setting up your Rails app</h3>
+
+  <ol>
+    <li>
+      Add the copycopter_client gem to your bundler Gemfile:
+      <pre>gem 'copycopter_client'</pre>
+    </li>
+
+    <li>
+      Put this in your config/initializers/copycopter.rb:
+      <pre><%= render 'projects/copycopter.rb.erb', :project => project %></pre>
+    </li>
+  </ol>
+</div>

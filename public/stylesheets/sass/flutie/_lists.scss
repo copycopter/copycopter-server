@@ -1,0 +1,40 @@
+/* Lists */
+
+ul, ol {
+  list-style-position: inside;
+  margin-bottom:  16px;
+}
+
+ul {
+  list-style-type: disc;
+}
+
+ol {
+  list-style-type: decimal;
+}
+
+dl {
+  line-height: 1.4;
+  margin-bottom: 16px;
+}
+
+dl dt {
+  font-weight: bold;
+  margin-top: 6px;
+}
+
+dl dd {
+  margin-bottom: 0em;
+}
+
+dd {
+  margin-left: 6px;
+}
+
+li {
+  line-height: 1.4;
+}
+
+ol ol, ol ul, ul ul, ul ol {
+  margin-left: 12px;
+}
