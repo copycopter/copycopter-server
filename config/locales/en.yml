@@ -36,3 +36,7 @@ en:
           description_html: <p>Copycopter painlessly integrates with your existing Rails app with a few quick steps.</p><p>Adding blurbs from your Rails application is easy. Just add text to your views using the <a href='http://guides.rubyonrails.org/i18n.html'>Rails I18n API</a>.</p>
           header: Setup
           screenshot: Screenshots showing Copycopter setup
+
+  project:
+    archived:
+      hint: Archived project don't count against your project total. You cannot create or edit content.

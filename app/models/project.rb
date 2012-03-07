@@ -1,6 +1,9 @@
 require 'extensions/string'
 
 class Project < ActiveRecord::Base
+  # Attributes
+  attr_accessible :name, :password, :username
+
   # Associatons
   has_many :blurbs
   belongs_to :draft_cache, :class_name => 'TextCache', :dependent => :destroy
@@ -10,7 +13,7 @@ class Project < ActiveRecord::Base
     :dependent => :destroy
 
   # Validations
-  validates_presence_of :api_key
+  validates_presence_of :api_key, :name, :password, :username
   validates_uniqueness_of :api_key
 
   # Callbacks

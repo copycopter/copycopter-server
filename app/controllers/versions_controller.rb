@@ -1,10 +1,9 @@
 class VersionsController < ApplicationController
-  before_filter :authorize
-
   def create
     self.set_html_preference params[:prefer_html]
     @localization = Localization.find(params[:localization_id])
     @project = @localization.project
+    authorize @project
     @version = @localization.revise(params[:version])
     @version.save!
 
@@ -22,6 +21,7 @@ class VersionsController < ApplicationController
     @localization = Localization.find(params[:localization_id])
     @version = @localization.revise
     @project = @localization.project
+    authorize @project
     @locale = @project.locale
     render
   end

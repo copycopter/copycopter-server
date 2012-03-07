@@ -3,11 +3,14 @@ require 'extensions/string'
 class Blurb < ActiveRecord::Base
   include HTMLDiff
 
+  # Associations
   belongs_to :project
   has_many :localizations, :dependent => :destroy
 
+  # Validations
   validates_presence_of :project_id
 
+  # Callbacks
   after_destroy :update_project_caches
 
   def self.ordered
