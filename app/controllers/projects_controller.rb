@@ -1,6 +1,4 @@
 class ProjectsController < ApplicationController
-  before_filter :authorize, :only => [:show]
-
   def create
     @project = Project.new(params[:project])
 
@@ -13,12 +11,14 @@ class ProjectsController < ApplicationController
 
   def destroy
     @project = Project.find(params[:id])
+    authorize @project
     @project.destroy
     redirect_to projects_url
   end
 
   def edit
     @project = Project.find(params[:id])
+    authorize @project
   end
 
   def new
@@ -27,6 +27,7 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.find(params[:id])
+    authorize @project
     @locale = @project.locale(params[:locale_id])
 
     if stale? :etag => @project.etag
@@ -37,6 +38,7 @@ class ProjectsController < ApplicationController
 
   def update
     @project = Project.find(params[:id])
+    authorize @project
 
     if @project.update_attributes params[:project]
       redirect_to @project

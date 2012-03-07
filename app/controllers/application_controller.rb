@@ -8,19 +8,15 @@ class ApplicationController < ActionController::Base
   end
 
   def set_html_preference(preference)
-    logger.info preference
-    logger.info session[:html_preference]
     session[:html_preference] = preference
-    logger.info preference
-    logger.info session[:html_preference]
   end
 
   private
 
-  def authorize
+  def authorize(project)
     unless Rails.env.test?
       authenticate_or_request_with_http_basic do |username, password|
-        username == 'copy' && password == 'copter'
+        username == project.username && password == project.password
       end
     end
   end
