@@ -2,9 +2,9 @@ Copycopter::Application.routes.draw do
   namespace :api do
     namespace :v2 do
       resources :projects, :only => [] do
+        resources :deploys, :only => [:create]
         resources :draft_blurbs, :only => [:create, :index]
         resources :published_blurbs, :only => [:index]
-        resources :deploys, :only => [:create]
       end
     end
   end
