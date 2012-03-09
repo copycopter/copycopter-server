@@ -8,23 +8,17 @@ When /^I make the following revisions:$/ do |table|
   end
 end
 
-Then /^no blank copy without a key should exist$/ do
-  Blurb.where(:key => '').count.should == 0
-end
+Given /^the following localizations exist in the "([^"]+)" project:$/ do |project_name, table|
+  project = Project.find_by_name!(project_name)
 
-Given /^the following copy exists:$/ do |table|
   table.hashes.each do |hash|
-    project = Project.find_by_name!(hash['project'])
-    draft_content = hash['draft content'] || ''
-    published_content = hash['published content'] || ''
+    blurb = project.blurbs.find_or_create_by_key(hash.delete('key'))
     locale = project.locales.find_or_create_by_key(hash['locale'] || 'en')
-    blurb = project.blurbs.find_or_create_by_key(hash['key'] || Factory.next(:key))
-    Factory :localization, :blurb => blurb, :locale => locale,
-      :draft_content => draft_content, :published_content => published_content
+    Factory :localization, hash.merge(:blurb => blurb, :locale => locale)
   end
 end
 
-Given /^the following copy is published:$/ do |table|
+Given /^the following blurb is published:$/ do |table|
   table.hashes.each do |hash|
     project = Project.find_by_name!(hash['project'])
     published_content = hash['content'] || ''
@@ -35,15 +29,15 @@ Given /^the following copy is published:$/ do |table|
   end
 end
 
-Then /^the following copy should exist in the "([^"]+)" project:$/ do |project_name, table|
+Then /^the following blurb should exist in the "([^"]+)" project:$/ do |project_name, table|
   project = Project.find_by_name!(project_name)
 
-  table.hashes.each do |copy_data|
-    blurb = project.blurbs.find_by_key!(copy_data.delete('key'))
-    locale = project.locales.find_by_key!(copy_data.delete('locale') || 'en')
+  table.hashes.each do |blurb_data|
+    blurb = project.blurbs.find_by_key!(blurb_data.delete('key'))
+    locale = project.locales.find_by_key!(blurb_data.delete('locale') || 'en')
     localization = blurb.localizations.find_by_locale_id!(locale.id)
 
-    copy_data.each do |key, value|
+    blurb_data.each do |key, value|
       localization[key].should == value
     end
   end

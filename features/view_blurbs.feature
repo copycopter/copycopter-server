@@ -1,14 +1,14 @@
-Feature: Blurb Browsing
+Feature: View blurbs
 
   @javascript
-  Scenario: Listing Blurbs in a Project
+  Scenario: View blurbs for a project
     Given a project exists with a name of "Project 1"
-    And the following copy exists:
-      | project   | draft content                      | key      |
-      | Project 1 | blah la                            | test.key |
-      | Project 1 | blah ha                            | awesome! |
-      | Project 1 | this is a very long bunch of words | more.key |
-      | Project 1 | Some simple text                   | another  |
+    And the following localizations exist in the "Project 1" project:
+      | draft_content                      | key      |
+      | blah la                            | test.key |
+      | blah ha                            | awesome! |
+      | this is a very long bunch of words | more.key |
+      | Some simple text                   | another  |
     When I go to the dashboard page
     And I follow "Project 1"
     Then no visible elements should contain "test"

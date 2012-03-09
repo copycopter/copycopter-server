@@ -5,11 +5,11 @@ Feature: Blurb Search
 
   @javascript
   Scenario: Filter blurbs by key
-    Given the following copy exists:
-      | project   | key            |
-      | Project 1 | test.find.this |
-      | Project 1 | test.Find.that |
-      | Project 1 | test.miss.that |
+    Given the following localizations exist in the "Project 1" project:
+      | key            |
+      | test.find.this |
+      | test.Find.that |
+      | test.miss.that |
     When I go to the blurbs index for the "Project 1" project
     Then no visible elements should contain "find"
     And a visible element should contain "Type the first"
@@ -31,9 +31,9 @@ Feature: Blurb Search
 
   @javascript
   Scenario: Perform a search with no results
-    Given the following copy exists:
-      | project   | key      |
-      | Project 1 | test.key |
+    Given the following localizations exist in the "Project 1" project:
+      | key      |
+      | test.key |
     When I go to the blurbs index for the "Project 1" project
     Then no visible elements should contain "No results"
     When I type "find" into "Search"

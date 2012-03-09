@@ -3,12 +3,12 @@ Feature: translate blurbs
 
   Background:
     Given a project exists with a name of "Project 1"
-    And the following copy exists:
-      | project   | draft content | key | locale |
-      | Project 1 | hello         | one | en     |
-      | Project 1 | hola          | one | es     |
-      | Project 1 | goodbye       | two | en     |
-      | Project 1 | adios         | two | es     |
+    And the following localizations exist in the "Project 1" project:
+      | draft_content | key | locale |
+      | hello         | one | en     |
+      | hola          | one | es     |
+      | goodbye       | two | en     |
+      | adios         | two | es     |
     When I go to the dashboard page
     And I follow "Project 1"
 

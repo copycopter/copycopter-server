@@ -2,12 +2,12 @@ FactoryGirl.define do
   sequence(:key) { |n| "key#{n}" }
   sequence(:name) { |n| "name#{n}" }
 
-  factory :locale do
-    key
+  factory :blurb do
     project
   end
 
-  factory :blurb do
+  factory :locale do
+    key
     project
   end
 

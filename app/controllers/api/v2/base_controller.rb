@@ -18,6 +18,6 @@ class Api::V2::BaseController < ActionController::Metal
   def missing_project
     render :json  => {
       'error' => 'No project was found with the given API key.'
-    }, :status => 404
+    }, :status => :not_found
   end
 end

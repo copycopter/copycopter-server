@@ -1,4 +1,4 @@
-Feature: download blurbs using the v2 api
+Feature: Download blurbs for a project through API
 
   Scenario: download draft blurbs for a known project
     Given a project exists with a name of "Breakfast"
@@ -26,14 +26,12 @@ Feature: download blurbs using the v2 api
       | en.test.one | expected one |
       | en.test.two | expected two |
 
-  @allow-rescue
   Scenario: attempt to download draft blurbs for an unknown project
     When I GET the v2 API URL for an unknown project's draft blurbs
     Then I should receive a HTTP 404
     And I should receive the following as a JSON object:
       | error | No project was found with the given API key. |
 
-  @allow-rescue
   Scenario: attempt to download published blurbs for an unknown project
     When I GET the v2 API URL for an unknown project's published blurbs
     Then I should receive a HTTP 404

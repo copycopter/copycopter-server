@@ -8,30 +8,30 @@ Feature: Blurb Editing
     Given a project exists with a name of "Project 1"
 
   Scenario: Editing Blurb in a Project
-    Given the following copy exists:
-      | project   | draft content | key      |
-      | Project 1 | blah la       | test.key |
+    Given the following localizations exist in the "Project 1" project:
+      | draft_content | key      |
+      | blah la       | test.key |
     When I go to the edit blurb page for "test.key" on "Project 1"
     Then I should see "blah la"
-    When I fill in "Content" with "new copy"
+    When I fill in "Content" with "new blurb"
     And I press "Save Blurb"
     Then I should see "Draft saved."
-    And the "Content" field should contain "new copy"
+    And the "Content" field should contain "new blurb"
     When I go to the edit blurb page for "test.key" on "Project 1"
-    Then I should see "new copy"
+    Then I should see "new blurb"
 
   Scenario: Edit a blurb and navigate back to the project
-    Given the following copy exists:
-      | project   | key      |
-      | Project 1 | test.key |
+    Given the following localizations exist in the "Project 1" project:
+      | key      |
+      | test.key |
     When I go to the edit blurb page for "test.key" on "Project 1"
     And I follow "Project 1"
     Then I should see "Project 1"
 
   Scenario: Deleting Blurb in a Project
-    Given the following copy exists:
-      | project         | draft content | key      |
-      | Project 1 | blah la       | test.key |
+    Given the following localizations exist in the "Project 1" project:
+      | draft_content | key      |
+      | blah la       | test.key |
     When I go to the edit blurb page for "test.key" on "Project 1"
     And I follow "Remove blurb"
     Then I should not see "test.key"
@@ -43,19 +43,16 @@ Feature: Blurb Editing
     And I should see "Adding blurbs to your app"
     But I should not see "Search blurbs"
 
-  Scenario: View a project with blurbs
-    Given the following copy exists:
-      | project   |
-      | Project 1 |
+  Scenario: View a project with no blurbs
     When I go to the dashboard page
     Then I should not see "Setting up your Rails app"
     And I should not see "Adding blurbs to your app"
 
   @javascript
   Scenario: Apply formatting to blurbs
-    Given the following copy exists:
-      | project   | key      | draft content |
-      | Project 1 | test.key | <p>hello</p>  |
+    Given the following localizations exist in the "Project 1" project:
+      | key      | draft_content |
+      | test.key | <p>hello</p>  |
     When I go to the edit blurb page for "test.key" on "Project 1"
     And I apply the "bold" editor function to "ell"
     And I apply the "italic" editor function to "el"
@@ -65,9 +62,9 @@ Feature: Blurb Editing
 
   @javascript
   Scenario: Edit blurbs using HTML
-    Given the following copy exists:
-      | project   | key      | draft content |
-      | Project 1 | test.key | <p>hello</p>  |
+    Given the following localizations exist in the "Project 1" project:
+      | key      | draft_content |
+      | test.key | <p>hello</p>  |
     When I go to the edit blurb page for "test.key" on "Project 1"
     And I apply the "bold" editor function to "ell"
     And I follow "Edit as HTML"
@@ -81,9 +78,9 @@ Feature: Blurb Editing
 
   @javascript
   Scenario: Switch between HTML and simple editing
-    Given the following copy exists:
-      | project   | key      | draft content |
-      | Project 1 | test.key | <p>hello</p>  |
+    Given the following localizations exist in the "Project 1" project:
+      | key      | draft_content |
+      | test.key | <p>hello</p>  |
     When I go to the edit blurb page for "test.key" on "Project 1"
     And I apply the "bold" editor function to "ell"
     And I follow "Edit as HTML"
@@ -98,9 +95,9 @@ Feature: Blurb Editing
 
   @javascript
   Scenario: Strip extra paragraph tags in simple editing
-    Given the following copy exists:
-      | project   | key      | draft content |
-      | Project 1 | test.key | hello         |
+    Given the following localizations exist in the "Project 1" project:
+      | key      | draft_content |
+      | test.key | hello         |
     When I go to the edit blurb page for "test.key" on "Project 1"
     And I apply the "bold" editor function to "ell"
     And I press "Save Blurb"
@@ -110,9 +107,9 @@ Feature: Blurb Editing
 
   @javascript
   Scenario: Insert newlines into an inline segment
-    Given the following copy exists:
-      | project   | key      | draft content |
-      | Project 1 | test.key | hello         |
+    Given the following localizations exist in the "Project 1" project:
+      | key      | draft_content |
+      | test.key | hello         |
     When I go to the edit blurb page for "test.key" on "Project 1"
     And I add a newline after "ell" in the editor
     And I press "Save Blurb"
@@ -121,9 +118,9 @@ Feature: Blurb Editing
 
   @javascript
   Scenario: Remember editor mode
-    Given the following copy exists:
-      | project   | key      |
-      | Project 1 | test.key |
+    Given the following localizations exist in the "Project 1" project:
+      | key      |
+      | test.key |
     When I go to the edit blurb page for "test.key" on "Project 1"
     And I follow "Edit as HTML"
     And I press "Save Blurb"
