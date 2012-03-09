@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe ProjectsController, 'index' do
+describe ProjectsController, 'show' do
   before do
     @project = Factory(:project)
     @project.create_defaults 'en.test' => 'value'

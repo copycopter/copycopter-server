@@ -37,14 +37,14 @@ Feature: Blurb Editing
     Then I should not see "test.key"
 
   Scenario: View a project with no blurbs
-    When I go to the dashboard page
+    When I go to the home page
     And I follow "Project 1"
     Then I should see "Setting up your Rails app"
     And I should see "Adding blurbs to your app"
     But I should not see "Search blurbs"
 
   Scenario: View a project with no blurbs
-    When I go to the dashboard page
+    When I go to the home page
     Then I should not see "Setting up your Rails app"
     And I should not see "Adding blurbs to your app"
 

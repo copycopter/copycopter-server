@@ -21,6 +21,10 @@ class ProjectsController < ApplicationController
     authorize @project
   end
 
+  def index
+    @projects = Project.active
+  end
+
   def new
     @project = Project.new
   end

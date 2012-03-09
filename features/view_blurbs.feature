@@ -9,7 +9,7 @@ Feature: View blurbs
       | blah ha                            | awesome! |
       | this is a very long bunch of words | more.key |
       | Some simple text                   | another  |
-    When I go to the dashboard page
+    When I go to the home page
     And I follow "Project 1"
     Then no visible elements should contain "test"
     When I follow "View all 4 blurbs"

@@ -4,8 +4,6 @@ module NavigationHelpers
     when /the blurbs index for the "([^"]+)" project/i
       project = Project.find_by_name!($1)
       project_path project
-    when /the dashboard page/
-      dashboard_path
     when /the edit blurb page for "(.+)" on "(.+)"/i
       project = Project.find_by_name!($2)
       blurb = project.blurbs.find_by_key!($1)

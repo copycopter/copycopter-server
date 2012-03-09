@@ -397,49 +397,6 @@ body.projects-new li.projects a {
   }
 }
 
-#footer {
-  @extend .clearfix;
-  color: #3a4c53;
-  margin-top: 40px;
-  text-align: center;
-  text-shadow:  0 1px 0 #c0e7f4;
-
-  p {
-    line-height: 1.6em;
-
-    a, a:link {
-      @include box-shadow(1px 0 0 #c0e7f4);
-      border-right: 1px solid #74adbf;
-      color: #3a4c53;
-      display: inline-block;
-      margin-right: 10px;
-      padding-right: 10px;
-
-      &:last-child {
-        @include box-shadow(0 0 0 #c0e7f4);
-        border-right: 0;
-        margin-right: 0;
-        padding-right: 0;
-      }
-    }
-
-    a:hover {
-      color: #1d2c31;
-    }
-
-    &.service {
-      margin-top: 10px;
-
-      a {
-        @include box-shadow(0 0 0 #c0e7f4);
-        border-right: 0;
-        margin-right: 0;
-        padding-right: 0;
-      }
-    }
-  }
-}
-
 @mixin settings-list {
   list-style: none;
 

@@ -252,28 +252,4 @@ body.landing_page_new_design {
       }
     }
   }
-
-  div#ground {
-    clear: both;
-    padding: 60px 0 87px;
-    text-align: center;
-    text-shadow: 0 1px 0 #B6DCEA;
-    background: transparent url(/images/home/ground.png) left bottom repeat-x;
-
-    h2 {
-      font: 600 24px $home_header;
-      color: #649FBA;
-    }
-
-    p {
-      color: #649FBA;
-    }
-
-    div#grass {
-      width: 809px;
-      height: 57px;
-      margin: 0 auto;
-      background: transparent url(/images/home/grass.png) top left no-repeat;
-    }
-  }
 }

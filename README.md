@@ -35,5 +35,5 @@ Run the server:
 Automatically regenerate CSS when you edit Sass files:
 
     sass --watch public/stylesheets/sass:public/stylesheets \
-      -r public/stylesheets/sass/bourbon/lib/bourbon.rb
+      -r ./public/stylesheets/sass/bourbon/lib/bourbon.rb
 

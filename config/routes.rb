@@ -9,8 +9,6 @@ Copycopter::Application.routes.draw do
     end
   end
 
-  resource :dashboard, :only => [:show]
-
   resources :projects do
     resources :blurbs, :only => [:destroy]
     resources :locales, :only => [:new]
@@ -20,7 +18,5 @@ Copycopter::Application.routes.draw do
     resources :versions, :only => [:new, :create]
   end
 
-  resource :home, :only => [:show]
-
-  root :to => 'homes#show'
+  root :to => 'projects#index'
 end

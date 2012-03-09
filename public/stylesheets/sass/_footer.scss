@@ -1,0 +1,71 @@
+#footer {
+  @extend .clearfix;
+  color: #3a4c53;
+  margin-bottom: 140px;
+  margin-top: 40px;
+  text-align: center;
+  text-shadow:  0 1px 0 #c0e7f4;
+
+  p {
+    line-height: 1.6em;
+
+    a, a:link {
+      @include box-shadow(1px 0 0 #c0e7f4);
+      border-right: 1px solid #74adbf;
+      color: #3a4c53;
+      display: inline-block;
+      margin-right: 10px;
+      padding-right: 10px;
+
+      &:last-child {
+        @include box-shadow(0 0 0 #c0e7f4);
+        border-right: 0;
+        margin-right: 0;
+        padding-right: 0;
+      }
+    }
+
+    a:hover {
+      color: #1d2c31;
+    }
+
+    &.service {
+      margin-top: 10px;
+
+      a {
+        @include box-shadow(0 0 0 #c0e7f4);
+        border-right: 0;
+        margin-right: 0;
+        padding-right: 0;
+      }
+    }
+  }
+}
+
+div#ground {
+  background: transparent url(/images/home/ground.png) left bottom repeat-x;
+  bottom: 0;
+  clear: both;
+  padding: 60px 0 87px;
+  position: fixed;
+  text-align: center;
+  text-shadow: 0 1px 0 #B6DCEA;
+  width: 100%;
+  z-index: -98;
+
+  h2 {
+    font: 600 24px $home_header;
+    color: #649FBA;
+  }
+
+  p {
+    color: #649FBA;
+  }
+
+  div#grass {
+    width: 809px;
+    height: 57px;
+    margin: 0 auto;
+    background: transparent url(/images/home/grass.png) top left no-repeat;
+  }
+}

@@ -9,7 +9,7 @@ Feature: translate blurbs
       | hola          | one | es     |
       | goodbye       | two | en     |
       | adios         | two | es     |
-    When I go to the dashboard page
+    When I go to the home page
     And I follow "Project 1"
 
   Scenario: view blurbs in a particular locale
