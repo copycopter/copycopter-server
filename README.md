@@ -1,5 +1,6 @@
 Copycopter
 ==========
+[![Build Status](https://secure.travis-ci.org/crowdtap/copycopter.server.png)](http://travis-ci.org/crowdtap/copycopter.server)
 
 Copycopter is a service for storing the static copy text of an application in a
 managed database, editable both by developers and clients.
