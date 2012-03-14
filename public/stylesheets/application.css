@@ -1040,13 +1040,11 @@ div#ground {
     float: left;
     font-family: "Andale Mono", "Lucida Console", "Courier New", Courier, monospace; }
 
-#project_name_input {
+#new_project #project_name_input {
   border-bottom: 1px solid #ABC2C9;
   padding-bottom: 20px; }
-
-#project_users_input {
-  border-top: 1px solid #ABC2C9;
-  padding-top: 20px; }
+#new_project p {
+  margin: 20px 0; }
 
 .installation_instructions {
   padding: 30px;
