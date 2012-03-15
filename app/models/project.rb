@@ -51,8 +51,12 @@ class Project < ActiveRecord::Base
     update_caches
   end
 
-  def draft_json
-    draft_cache.data
+  def draft_json(options = { :hierarchy => false })
+    if options[:hierarchy]
+      draft_cache.hierarchichal_data
+    else
+      draft_cache.data
+    end
   end
 
   def etag
@@ -71,8 +75,12 @@ class Project < ActiveRecord::Base
     "project-#{id}-create-defaults"
   end
 
-  def published_json
-    published_cache.data
+  def published_json(options = { :hierarchy => false })
+    if options[:hierarchy]
+      published_cache.hierarchichal_data
+    else
+      published_cache.data
+    end
   end
 
   def self.regenerate_caches
@@ -82,8 +90,8 @@ class Project < ActiveRecord::Base
   end
 
   def update_caches
-    draft_cache.update_attributes! :data => generate_json(:draft_content)
-    published_cache.update_attributes! :data => generate_json(:published_content)
+    draft_cache.update_attributes!(generate_json(:draft_content))
+    published_cache.update_attributes!(generate_json(:published_content))
     touch
   end
 
@@ -111,6 +119,9 @@ class Project < ActiveRecord::Base
   end
 
   def generate_json(content)
-    Yajl::Encoder.encode blurbs.to_hash(content)
+    blurbs_hash = blurbs.to_hash(content)
+    blurbs_hash[:data] = Yajl::Encoder.encode blurbs_hash[:data]
+    blurbs_hash[:hierarchichal_data] = Yajl::Encoder.encode blurbs_hash[:hierarchichal_data]
+    blurbs_hash
   end
 end

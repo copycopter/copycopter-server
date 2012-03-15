@@ -54,3 +54,41 @@ Feature: Download blurbs for a project through API
     Then I should receive the following as a JSON object:
       | en.test.one | update |
 
+  Scenario: download published blurbs with a json hieratchy for a known project
+    Given a project exists with a name of "Breakfast"
+    When I POST the v2 API URI for "Breakfast" draft blurbs:
+      | en.test.one | expected one |
+      | en.test.two | expected two |
+    And I POST the v2 API URI for "Breakfast" deploys
+    When I GET the v2 API URI for "Breakfast" published blurbs with a hierarchy param
+    Then I should receive a HTTP 200
+    And I should receive the following JSON response:
+    """
+      {
+        "en": {
+          "test": {
+            "one": "expected one",
+            "two": "expected two"
+          }
+        }
+      }
+    """
+
+  Scenario: download draft blurbs with a json hierarchy for a known project 
+    Given a project exists with a name of "Breakfast"
+    When I POST the v2 API URI for "Breakfast" draft blurbs:
+      | en.test.one | expected one |
+      | en.test.two | expected two |
+    And I GET the v2 API URI for "Breakfast" draft blurbs with a hierarchy param
+    Then I should receive a HTTP 200
+    And I should receive the following JSON response:
+    """
+      {
+        "en": {
+          "test": {
+            "one": "expected one",
+            "two": "expected two"
+          }
+        }
+      }
+    """

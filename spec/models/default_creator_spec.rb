@@ -15,26 +15,25 @@ describe DefaultCreator do
   it 'sets draft content for a list of blurbs' do
     locale = project.locales.first
     one = Factory(:blurb, :project => project, :key => 'test.one')
-    Factory :localization, :blurb => one,
-      :locale => locale,
-      :draft_content => 'draft one',
-      :published_content => 'published one'
+    Factory :localization, :blurb             => one,
+                           :locale            => locale,
+                           :draft_content     => 'draft one',
+                           :published_content => 'published one'
+
     two = Factory :blurb, :project => project, :key => 'test.two'
-    Factory :localization, :blurb => two,
-      :locale => locale,
-      :draft_content => 'draft two',
-      :published_content => 'published two'
+    Factory :localization, :blurb             => two,
+                           :locale            => locale,
+                           :draft_content     => 'draft two',
+                           :published_content => 'published two'
+
     create_defaults 'en.test.one' => 'new one', 'en.test.three' => 'new three'
-    project.localizations(true).map(&:draft_content).
-      should =~ ['draft one', 'draft two', 'new three']
-    project.localizations.map(&:published_content).
-      should =~ ['', 'published one', 'published two']
+    project.localizations(true).map(&:draft_content).should =~ ['draft one', 'draft two', 'new three']
+    project.localizations.map(&:published_content).should =~ ['', 'published one', 'published two']
   end
 
   it 'ignores blank keys' do
     create_defaults 'en.test.one' => 'not blank', '' => 'blank'
-    project.localizations(true).map(&:draft_content).
-      should =~ ['not blank']
+    project.localizations(true).map(&:draft_content).should =~ ['not blank']
   end
 
   it "only updates the project once when creating several defaults" do
