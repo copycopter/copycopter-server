@@ -43,6 +43,6 @@ end
 
 Then /^I should receive the following as a JSON object:$/ do |table|
   expected_hash = table.transpose.hashes.first
-  actual_result = Yajl::Parser.parse(response_body)
+  actual_result = Yajl::Parser.parse(page.source)
   actual_result.should == expected_hash
 end

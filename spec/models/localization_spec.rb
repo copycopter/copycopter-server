@@ -178,7 +178,7 @@ describe Localization, '.publish' do
 
     localization_to_be_published.published_version.should == new_version_for_localization_to_be_published
     localization_to_be_published.published_content.should == new_content
-    localization_to_be_published.updated_at.should == Time.now
+    localization_to_be_published.updated_at.to_i.should == Time.now.to_i
   end
 
   it 'publishes data for multiple localizations' do
@@ -186,7 +186,7 @@ describe Localization, '.publish' do
 
     second_localization_to_be_published.published_version.should == new_version_for_second_localization_to_be_published
     second_localization_to_be_published.published_content.should == more_new_content
-    second_localization_to_be_published.updated_at.should == Time.now
+    second_localization_to_be_published.updated_at.to_i.should == Time.now.to_i
   end
 
   it 'does not publish localizations not selected to be published' do

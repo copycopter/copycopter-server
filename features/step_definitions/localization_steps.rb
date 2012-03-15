@@ -13,7 +13,7 @@ Given /^the following localizations exist in the "([^"]+)" project:$/ do |projec
 
   table.hashes.each do |hash|
     blurb = project.blurbs.find_or_create_by_key(hash.delete('key'))
-    locale = project.locales.find_or_create_by_key(hash['locale'] || 'en')
+    locale = project.locales.find_or_create_by_key(hash.delete('locale') || 'en')
     Factory :localization, hash.merge(:blurb => blurb, :locale => locale)
   end
 end
