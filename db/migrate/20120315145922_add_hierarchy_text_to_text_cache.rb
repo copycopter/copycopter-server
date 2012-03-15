@@ -1,8 +1,6 @@
 class AddHierarchyTextToTextCache < ActiveRecord::Migration
   def up
-    change_table :text_caches do |t|
-      t.text :hierarchichal_data
-    end
+    add_column :text_caches, :hierarchichal_data, :text
   end
 
   def down
