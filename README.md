@@ -16,17 +16,15 @@ published.
 Setup
 -----
 
-The following assumes `bake` as an alias for `bundle exec rake`.
-
     bundle
-    bake setup
+    bundle exec rake setup
 
 Development
 -----------
 
 Run the test suite:
 
-    bake
+    bundle exec rake
 
 Run the server:
 
