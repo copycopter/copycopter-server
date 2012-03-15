@@ -118,11 +118,23 @@ describe Project, 'destroy' do
 end
 
 describe Project, 'draft_json' do
-  it 'returns draft hash' do
-    project = Factory(:project)
-    project.create_defaults('en.test.key' => 'value')
+  let(:project) { Factory(:project) }
 
+  before { project.create_defaults('en.test.key' => 'value') }
+
+  it 'returns draft hash' do
     project.reload.draft_json.should == Yajl::Encoder.encode('en.test.key' => 'value')
+  end
+
+  it 'returns draft hash with hierarchy' do
+    hierarchichal_representation = {
+      'en' => {
+        'test' => {
+          'key' => 'value'
+        }
+      }
+    }
+    project.reload.draft_json(:hierarchy => true).should == Yajl::Encoder.encode(hierarchichal_representation)
   end
 end
 
@@ -205,15 +217,30 @@ describe Project, 'locale' do
 end
 
 describe Project, 'published_json' do
-  it 'returns published hash' do
-    project = Factory(:project)
+  let(:project) { Factory(:project) }
+
+  before do
     project.create_defaults('en.test.key' => 'value')
     project.deploy!
     project.blurbs.first.localizations.first.revise(:content   => 'new value',
                                                     :published => false).save!
+  end
 
+  it 'returns published hash' do
     project.reload.published_json.should == Yajl::Encoder.encode('en.test.key' => 'value')
   end
+
+  it 'returns draft hash with hierarchy' do
+    hierarchichal_representation = {
+      'en' => {
+        'test' => {
+          'key' => 'value'
+        }
+      }
+    }
+    project.reload.published_json(:hierarchy => true).should == Yajl::Encoder.encode(hierarchichal_representation)
+  end
+
 end
 
 describe Project, '.regenerate_caches' do
