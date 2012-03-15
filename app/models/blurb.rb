@@ -33,6 +33,6 @@ class Blurb < ActiveRecord::Base
   private
 
   def update_project_caches
-    project.schedule_cache_update
+    project.update_caches
   end
 end

@@ -48,7 +48,7 @@ class Project < ActiveRecord::Base
 
   def deploy!
     localizations.publish
-    schedule_cache_update
+    update_caches
   end
 
   def draft_json
@@ -79,10 +79,6 @@ class Project < ActiveRecord::Base
     find_each do |project|
       project.update_caches
     end
-  end
-
-  def schedule_cache_update
-    JOB_QUEUE.enqueue ProjectCacheJob.new(id)
   end
 
   def update_caches
