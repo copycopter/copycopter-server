@@ -1,11 +1,19 @@
-When /^I GET the v2 API URI for "([^"]*)" draft blurbs$/ do |project_name|
+When /^I GET the v2 API URI for "([^"]*)" draft blurbs( with a hierarchy param)?$/ do |project_name, hierarchy|
   project = Project.find_by_name!(project_name)
-  get_with_etag "/api/v2/projects/#{project.api_key}/draft_blurbs"
+  if hierarchy
+    get_with_etag "/api/v2/projects/#{project.api_key}/draft_blurbs?format=hierarchy"
+  else
+    get_with_etag "/api/v2/projects/#{project.api_key}/draft_blurbs"
+  end
 end
 
-When /^I GET the v2 API URI for "([^"]*)" published blurbs$/ do |project_name|
+When /^I GET the v2 API URI for "([^"]*)" published blurbs( with a hierarchy param)?$/ do |project_name, hierarchy|
   project = Project.find_by_name!(project_name)
-  get_with_etag "/api/v2/projects/#{project.api_key}/published_blurbs"
+  if hierarchy
+    get_with_etag "/api/v2/projects/#{project.api_key}/published_blurbs?format=hierarchy"
+  else
+    get_with_etag "/api/v2/projects/#{project.api_key}/published_blurbs"
+  end
 end
 
 When /^I GET the v2 API URI for "([^"]*)" published blurbs twice$/ do |project_name|
@@ -45,4 +53,9 @@ Then /^I should receive the following as a JSON object:$/ do |table|
   expected_hash = table.transpose.hashes.first
   actual_result = Yajl::Parser.parse(page.source)
   actual_result.should == expected_hash
+end
+
+Then /^I should receive the following JSON response:$/ do |string|
+  actual_result = JSON.parse(page.source)
+  actual_result.should == JSON.parse(string)
 end

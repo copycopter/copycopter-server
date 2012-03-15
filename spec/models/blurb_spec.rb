@@ -32,25 +32,66 @@ describe Blurb, 'given draft and published content for several blurbs and locale
     one = Factory(:blurb, :key => 'test.one', :project => project)
     two = Factory(:blurb, :key => 'test.two', :project => project)
 
-    Factory :localization, :blurb => one, :locale => en,
-      :draft_content => 'draft one', :published_content => 'published one'
-    Factory :localization, :blurb => two, :locale => en,
-      :draft_content => 'draft two', :published_content => 'published two'
-    Factory :localization, :blurb => two, :locale => fr,
-      :draft_content => 'ébauche', :published_content => 'publié'
+    Factory :localization, :blurb              => one,
+                           :locale            => en,
+                           :draft_content     => 'draft one',
+                           :published_content => 'published one'
+    Factory :localization, :blurb             => two,
+                           :locale            => en,
+                           :draft_content     => 'draft two',
+                           :published_content => 'published two'
+    Factory :localization, :blurb             => two,
+                           :locale            => fr,
+                           :draft_content     => 'ébauche',
+                           :published_content => 'publié'
   end
 
   it 'returns draft hash' do
-    Blurb.to_hash(:draft_content).should == {
-      'en.test.one' => 'draft one', 'en.test.two' => 'draft two',
+    Blurb.to_hash(:draft_content).should include(:data => {
+      'en.test.one' => 'draft one',
+      'en.test.two' => 'draft two',
       'fr.test.two' => 'ébauche'
-    }
+    })
   end
 
   it 'returns published hash' do
-    Blurb.to_hash(:published_content).should == {
-      'en.test.one' => 'published one', 'en.test.two' => 'published two',
+    Blurb.to_hash(:published_content).should include(:data => {
+      'en.test.one' => 'published one', 
+      'en.test.two' => 'published two',
       'fr.test.two' => 'publié'
-    }
+    })
+  end
+
+  it 'returns a draft hash maintaining hierarchy' do
+    Blurb.to_hash(:draft_content).should include(:hierarchichal_data => {
+      'en' => {
+        'test' => {
+          'one' => 'draft one',
+          'two' => 'draft two'
+        }
+      },
+      'fr' => {
+        'test' => {
+          'two' => 'ébauche'
+        }
+      }
+    })
+  end
+
+  it 'returns a published hash maintaining hierarchy' do
+    Blurb.to_hash(:published_content).should include(:hierarchichal_data => {
+      'en' => {
+        'test' => {
+          'one' => 'published one',
+          'two' => 'published two'
+        }
+      },
+      'fr' => {
+        'test' => {
+          'two' => 'publié'
+        }
+      }
+    })
+
   end
 end
