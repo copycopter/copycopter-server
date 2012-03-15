@@ -5,7 +5,7 @@ describe DeployJob, 'perform' do
     @project = Factory(:project)
     @project.stubs :deploy! => true
     job = DeployJob.new(@project)
-    @project.should_not have_received(:deploy!)
+    @project.should have_received(:deploy!).never
     job.perform
   end
 

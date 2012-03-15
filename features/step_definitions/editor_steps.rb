@@ -63,5 +63,5 @@ When /^I add a newline after "([^"]*)" in the editor$/ do |text|
   editor_content = find_field('Content').value
   editor_content = "<p>#{editor_content}</p>" unless editor_content.include?('<p>')
   editor_content.sub!(text, "#{text}</p><p>")
-  When %{I change the editor's content to "#{editor_content}"}
+  step %{I change the editor's content to "#{editor_content}"}
 end
