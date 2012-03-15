@@ -23,6 +23,5 @@ class VersionsController < ApplicationController
     @project = @localization.project
     authorize @project
     @locale = @project.locale
-    render
   end
 end
