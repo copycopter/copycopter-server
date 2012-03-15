@@ -29,7 +29,7 @@ Then /^a visible element should contain "([^"]*)"$/ do |text|
 end
 
 When /^I clear the "([^"]*)" field$/ do |label|
-  When %{I type "" into "#{label}"}
+  step %{I type "" into "#{label}"}
 end
 
 When /^I type "([^"]*)" into "([^"]+)"/ do |text, label|
