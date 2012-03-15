@@ -63,7 +63,7 @@ class Version < ActiveRecord::Base
   end
 
   def update_project_caches
-    project.schedule_cache_update
+    project.update_caches
   end
 
   def first_version?

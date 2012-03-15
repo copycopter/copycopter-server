@@ -1,6 +1,5 @@
 source :rubygems
 
-gem 'delayed_job', '3.0.1'
 gem 'dynamic_form', '1.1.4'
 gem 'flutie', '1.3.3'
 gem 'formtastic', '2.0.2'

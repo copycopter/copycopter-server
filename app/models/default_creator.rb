@@ -22,7 +22,7 @@ class DefaultCreator
 
       create_missing_localizations
 
-      project.schedule_cache_update
+      project.update_caches
     end
   end
 

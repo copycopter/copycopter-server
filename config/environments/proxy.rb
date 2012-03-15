@@ -7,8 +7,4 @@ Copycopter::Application.configure do
   config.i18n.fallbacks = true
   config.log_level = :info
   config.serve_static_assets = false
-
-  config.after_initialize do
-    ::JOB_QUEUE = Delayed::Job
-  end
 end
