@@ -1,16 +1,16 @@
 Copycopter
 ==========
 
-Copycopter is a service for storing the static copy text of an application in a
-managed database, editable both by developers and clients.
+Copycopter is a service for editing the copy text of a Rails application.
 
-Each application has its own Project. Each individual piece of copy text in a
-Project is represented by a Blurb. Each Blurb has many Versions, which track
-changes users make to copy text.
+Each Rails application has its own Project, connected by an API key.
+Each piece of copy in a Project is a Blurb. Each Blurb has many Versions, which
+track changes users make to copy.
 
-Each Version is either draft or published. The intention is to display
-published content in production, and draft in all other environments. A
-developer can issue a deploy, which marks the latest Version of all Blurbs as
+Each Version is either draft or published. The most typical scenario is to
+display published content in production, and draft in all other environments.
+
+A developer can issue a deploy, which marks the latest Version of all Blurbs as
 published.
 
 Setup
@@ -35,3 +35,7 @@ Automatically regenerate CSS when you edit Sass files:
     sass --watch public/stylesheets/sass:public/stylesheets \
       -r ./public/stylesheets/sass/bourbon/lib/bourbon.rb
 
+Contributing
+------------
+
+See the [style guide](https://github.com/copycopter/style-guide).
