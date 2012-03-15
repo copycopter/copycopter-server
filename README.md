@@ -16,6 +16,8 @@ published.
 Setup
 -----
 
+    git clone git@github.com:copycopter/copycopter-server.git
+    cd copycopter-server
     bundle
     bundle exec rake setup
 
