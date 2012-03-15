@@ -1,7 +1,7 @@
 When /^I GET the v2 API URI for "([^"]*)" draft blurbs( with a hierarchy param)?$/ do |project_name, hierarchy|
   project = Project.find_by_name!(project_name)
   if hierarchy
-    get_with_etag "/api/v2/projects/#{project.api_key}/draft_blurbs?hierarchy=true"
+    get_with_etag "/api/v2/projects/#{project.api_key}/draft_blurbs?format=hierarchy"
   else
     get_with_etag "/api/v2/projects/#{project.api_key}/draft_blurbs"
   end
@@ -10,7 +10,7 @@ end
 When /^I GET the v2 API URI for "([^"]*)" published blurbs( with a hierarchy param)?$/ do |project_name, hierarchy|
   project = Project.find_by_name!(project_name)
   if hierarchy
-    get_with_etag "/api/v2/projects/#{project.api_key}/published_blurbs?hierarchy=true"
+    get_with_etag "/api/v2/projects/#{project.api_key}/published_blurbs?format=hierarchy"
   else
     get_with_etag "/api/v2/projects/#{project.api_key}/published_blurbs"
   end

@@ -28,7 +28,8 @@ class Blurb < ActiveRecord::Base
     end
 
     hierarchichal_data = blurbs.inject({}) do |result, (blurb_key, locale_key, content)|
-      keys = blurb_key.split('.')
+      keys = []
+      keys = blurb_key.split('.') if blurb_key
       result.deep_merge!({ locale_key => create_hierarchichal_hash_from_array(keys + [content]) })
     end
 

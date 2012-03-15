@@ -193,7 +193,7 @@ DEPENDENCIES
   bourbon (= 1.4.0)
   bourne (= 1.1.1)
   capybara-webkit (= 0.3.0)
-  cucumber-rails
+  cucumber-rails (= 0.4.1)
   database_cleaner (= 0.7.1)
   dynamic_form (= 1.1.4)
   factory_girl_rails (= 1.7.0)

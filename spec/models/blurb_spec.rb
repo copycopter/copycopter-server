@@ -33,9 +33,9 @@ describe Blurb, 'given draft and published content for several blurbs and locale
     two = Factory(:blurb, :key => 'test.two', :project => project)
 
     Factory :localization, :blurb              => one,
-                            :locale            => en,
-                            :draft_content     => 'draft one',
-                            :published_content => 'published one'
+                           :locale            => en,
+                           :draft_content     => 'draft one',
+                           :published_content => 'published one'
     Factory :localization, :blurb             => two,
                            :locale            => en,
                            :draft_content     => 'draft two',

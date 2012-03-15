@@ -1,7 +1,7 @@
 class Api::V2::DraftBlurbsController < Api::V2::BaseController
   def index
     if stale? :etag => current_project.etag
-      if params[:hierarchy]
+      if  params[:format] == "hierarchy"
         render :json => current_project.draft_json(:hierarchy => true)
       else
         render :json => current_project.draft_json
