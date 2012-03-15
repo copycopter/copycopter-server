@@ -621,7 +621,7 @@ a:hover {
   color: #53913a;
   text-decoration: underline; }
 
-input[type='submit'], button, .button {
+input[type='submit'], button {
   -webkit-box-shadow: inset 0 1px 0 #c4e1b7;
   -moz-box-shadow: inset 0 1px 0 #c4e1b7;
   -ms-box-shadow: inset 0 1px 0 #c4e1b7;
@@ -647,9 +647,9 @@ input[type='submit'], button, .button {
   font: bold 16px "PT Sans", "Helvetica neue", Helvetica, Arial, sans-serif;
   padding: 5px 15px;
   text-shadow: 0 -1px 0 #3f832a; }
-  input[type='submit']:link, input[type='submit']:visited, button:link, button:visited, .button:link, .button:visited {
+  input[type='submit']:link, input[type='submit']:visited, button:link, button:visited {
     color: #fff; }
-  input[type='submit']:hover, button:hover, .button:hover {
+  input[type='submit']:hover, button:hover {
     background-color: #75ad5c;
     background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #75ad5c), color-stop(100%, #64a14b));
     background-image: -webkit-linear-gradient(top, #75ad5c, #64a14b);
