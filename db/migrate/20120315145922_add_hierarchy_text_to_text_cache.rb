@@ -6,6 +6,6 @@ class AddHierarchyTextToTextCache < ActiveRecord::Migration
   end
 
   def down
-    remove_column :text_cahces, :hierarchichal_data
+    remove_column :text_caches, :hierarchichal_data
   end
 end
