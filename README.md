@@ -21,13 +21,21 @@ Setup
     bundle
     bundle exec rake setup
 
-Creating a Project
-------------------
+Deploy
+------
 
-    rake copycopter:create_project NAME=Crowdtap USERNAME=Constantine PASSWORD=Mavromoustakos
+Deploy Copycopter Server like any other Rails app. Heroku example:
 
-Development
------------
+    heroku create --stack cedar
+    git push heroku master
+    heroku run rake db:migrate
+    heroku restart
+    heroku run rake copycopter:project NAME=Iora USERNAME=Copy PASSWORD=Copter
+
+Contribute
+----------
+
+See the [style guide](https://github.com/copycopter/style-guide).
 
 Run the test suite:
 
@@ -41,11 +49,6 @@ Automatically regenerate CSS when you edit Sass files:
 
     sass --watch public/stylesheets/sass:public/stylesheets \
       -r ./public/stylesheets/sass/bourbon/lib/bourbon.rb
-
-Contributing
-------------
-
-See the [style guide](https://github.com/copycopter/style-guide).
 
 Credits
 -------

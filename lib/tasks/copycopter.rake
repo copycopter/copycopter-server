@@ -3,7 +3,7 @@ namespace :copycopter do
     Project.regenerate_caches
   end
 
-  task :create_project => :environment do
+  task :project => :environment do
     project = Project.new(:name => ENV['NAME'], :password => ENV['PASSWORD'], :username => ENV['USERNAME'])
 
     if project.save

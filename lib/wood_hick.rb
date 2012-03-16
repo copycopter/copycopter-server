@@ -1,9 +1,18 @@
 class WoodHick < ActiveSupport::LogSubscriber
   def process_action(event)
     payload = event.payload
-    log payload[:status] if payload[:status]
-    log payload[:exception].join('\n') if payload[:exception]
-    log payload[:path] if payload[:path]
+
+    if payload[:status]
+      log payload[:status]
+    end
+
+    if payload[:exception]
+      log payload[:exception].join('\n')
+    end
+
+    if payload[:path]
+      log payload[:path]
+    end
   end
 
   def log(message)
@@ -15,4 +24,6 @@ class WoodHick < ActiveSupport::LogSubscriber
   end
 end
 
-WoodHick.attach_to :action_controller if ENV['DEBUG']
+if ENV['DEBUG']
+  WoodHick.attach_to :action_controller
+end
