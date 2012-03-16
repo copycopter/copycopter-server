@@ -41,3 +41,19 @@ Contributing
 ------------
 
 See the [style guide](https://github.com/copycopter/style-guide).
+
+Credits
+-------
+
+![thoughtbot](http://thoughtbot.com/images/tm/logo.png)
+
+Copycopter Server was created by [thoughtbot, inc](http://thoughtbot.com)
+
+It is maintained by the fine folks at [Crowdtap](http://crowdtap.com) and
+[Iora Health](http://iorahealth.com).
+
+License
+-------
+
+Copycopter Server is free software, and may be redistributed under the terms
+specified in the MIT-LICENSE file.
