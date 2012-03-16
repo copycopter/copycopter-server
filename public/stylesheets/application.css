@@ -1067,8 +1067,7 @@ ul.projects {
   ul.projects li {
     color: rgba(29, 44, 48, 0.6);
     font-size: 14px;
-    margin: 20px 0;
-    text-shadow: 0 1px 0 #BBE5F6; }
+    margin: 20px 0; }
 
 #main-content fieldset.buttons #remove_blurb {
   background: url("/images/remove-alt.png") 8px 14px no-repeat;
