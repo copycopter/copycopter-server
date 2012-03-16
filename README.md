@@ -18,8 +18,6 @@ Setup
 
     git clone git@github.com:copycopter/copycopter-server.git
     cd copycopter-server
-    bundle
-    bundle exec rake setup
 
 Deploy
 ------
@@ -36,6 +34,10 @@ Contribute
 ----------
 
 See the [style guide](https://github.com/copycopter/style-guide).
+
+Set up dependencies:
+
+    bundle
 
 Run the test suite:
 
