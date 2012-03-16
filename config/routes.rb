@@ -9,7 +9,7 @@ Copycopter::Application.routes.draw do
     end
   end
 
-  resources :projects do
+  resources :projects, :only => [:index, :show] do
     resources :blurbs, :only => [:destroy]
     resources :locales, :only => [:new]
   end

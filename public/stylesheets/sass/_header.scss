@@ -16,37 +16,4 @@
       width: 228px;
     }
   }
-
-  #new-project {
-    @extend .clearfix;
-    display:block;
-    float: right;
-    list-style: none;
-    margin-bottom: 0;
-    position: absolute;
-    right: 0;
-    top: 10px;
-    z-index: 100;
-
-    a {
-      @include border-radius(5px);
-      @include box-shadow(0 2px 6px #b6b6b6);
-      background: #fff;
-      background: url('/images/create_a_project.png') center 14px no-repeat, -moz-linear-gradient(0% 100% 90deg,#d3dee2, #fff);
-      background: url('/images/create_a_project.png') center 14px no-repeat, -webkit-gradient(linear, 0% 0%, 0% 100%, from(#fff), to(#d3dee2));
-      border: 1px solid #bbbbbb;
-      border-top: 1px solid #d4d4d4;
-      border-bottom: 1px solid #959595;
-      display: block;
-      height: 50px;
-      margin: 0 auto;
-      text-indent: -5000px;
-      width: 240px;
-
-      &:hover {
-      background: url('/images/create_a_project.png') center 14px no-repeat, -moz-linear-gradient(0% 100% 90deg, #d3dee2, #f4f7f9);
-      background: url('/images/create_a_project.png') center 14px no-repeat, -webkit-gradient(linear, 0% 0%, 0% 100%, from(#f4f7f9), to(#d3dee2));
-      }
-    }
-  }
 }

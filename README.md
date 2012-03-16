@@ -21,6 +21,11 @@ Setup
     bundle
     bundle exec rake setup
 
+Creating a Project
+------------------
+
+    rake copycopter:create_project NAME=Crowdtap USERNAME=Constantine PASSWORD=Mavromoustakos
+
 Development
 -----------
 
