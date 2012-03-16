@@ -4,8 +4,8 @@ class Blurb < ActiveRecord::Base
   include HTMLDiff
 
   # Associations
-  belongs_to :project
   has_many :localizations, :dependent => :destroy
+  belongs_to :project
 
   # Validations
   validates_presence_of :project_id

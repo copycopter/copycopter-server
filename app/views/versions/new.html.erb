@@ -27,8 +27,8 @@
     <%= form.commit_button 'Save Blurb' %>
 
     <%= link_to project_blurb_path(@project, @localization.blurb),
-          :method  => 'delete',
-          :confirm => 'Delete this blurb and all associated content?',
+          :method => :delete,
+          :confirm => 'Delete blurb?',
           :id => 'remove_blurb' do %>
       <span class='delete_item'>Remove blurb</span>
     <% end -%>

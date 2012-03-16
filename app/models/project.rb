@@ -98,8 +98,8 @@ class Project < ActiveRecord::Base
   private
 
   def create_caches
-    self.draft_cache = TextCache.create!(:data => "{}")
-    self.published_cache = TextCache.create!(:data => "{}")
+    self.draft_cache = TextCache.create!(:data => '{}')
+    self.published_cache = TextCache.create!(:data => '{}')
   end
 
   def create_english_locale
