@@ -1,16 +1,6 @@
 class ProjectsController < ApplicationController
   before_filter :authorize, :only => [:destroy, :edit, :show, :update]
 
-  def create
-    @project = Project.new(params[:project])
-
-    if @project.save
-      redirect_to @project
-    else
-      render :action => :new
-    end
-  end
-
   def destroy
     project = Project.find(params[:id])
     project.destroy
