@@ -35,6 +35,7 @@ end
 When /^I type "([^"]*)" into "([^"]+)"/ do |text, label|
   field = find_field(label)
   field.set text
+  field.trigger 'keyup'
   sleep 1
 end
 

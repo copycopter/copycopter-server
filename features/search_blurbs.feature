@@ -38,7 +38,7 @@ Feature: Blurb Search
     Then no visible elements should contain "No results"
     When I type "find" into "Search"
     Then a visible element should contain "No results"
-    When I type "" into "Search"
+    When I clear the "Search" field
     Then no visible elements should contain "No results"
     When I type "test" into "Search"
     Then no visible elements should contain "No results"
