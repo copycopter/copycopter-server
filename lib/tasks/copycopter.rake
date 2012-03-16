@@ -4,7 +4,7 @@ namespace :copycopter do
   end
 
   task :create_project => :environment do
-    project = Project.new(:name => ENV["NAME"], :password => ENV["PASSWORD"], :username => ENV["USERNAME"])
+    project = Project.new(:name => ENV['NAME'], :password => ENV['PASSWORD'], :username => ENV['USERNAME'])
 
     if project.save
       puts "Project #{project.name} created!"

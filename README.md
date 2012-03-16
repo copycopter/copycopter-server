@@ -21,6 +21,11 @@ Setup
     bundle
     bundle exec rake setup
 
+Creating a Project
+------------------
+
+    rake NAME=Crowdtap USERNAME=Constantine PASSWORD=Mavromoustakos
+
 Development
 -----------
 
