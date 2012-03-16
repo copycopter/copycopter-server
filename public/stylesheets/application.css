@@ -138,17 +138,17 @@ www.webaim.org/techniques/css/invisiblecontent/  &  j.mp/visuallyhidden  */
   visibility: hidden; }
 
 /* >> The Magnificent CLEARFIX: Updated to prevent margin-collapsing on child elements << j.mp/bestclearfix */
-.clearfix:before, .subnav:before, #content:before, #content .content-header:before, #header:before, #header #new-project:before, #footer:before, li#version_content_input .wysiwyg .toolbar:before, body.landing_page_new_design section#main-description:before, body.landing_page_new_design section#tour section#setup:before, body.landing_page_new_design section#tour section#edit:before, .clearfix:after, .subnav:after, #content:after, #content .content-header:after, #header:after, #header #new-project:after, #footer:after, li#version_content_input .wysiwyg .toolbar:after, body.landing_page_new_design section#main-description:after, body.landing_page_new_design section#tour section#setup:after, body.landing_page_new_design section#tour section#edit:after {
+.clearfix:before, .subnav:before, #content:before, #content .content-header:before, #header:before, #footer:before, li#version_content_input .wysiwyg .toolbar:before, body.landing_page_new_design section#main-description:before, body.landing_page_new_design section#tour section#setup:before, body.landing_page_new_design section#tour section#edit:before, .clearfix:after, .subnav:after, #content:after, #content .content-header:after, #header:after, #footer:after, li#version_content_input .wysiwyg .toolbar:after, body.landing_page_new_design section#main-description:after, body.landing_page_new_design section#tour section#setup:after, body.landing_page_new_design section#tour section#edit:after {
   content: "\0020";
   display: block;
   height: 0;
   visibility: hidden; }
 
-.clearfix:after, .subnav:after, #content:after, #content .content-header:after, #header:after, #header #new-project:after, #footer:after, li#version_content_input .wysiwyg .toolbar:after, body.landing_page_new_design section#main-description:after, body.landing_page_new_design section#tour section#setup:after, body.landing_page_new_design section#tour section#edit:after {
+.clearfix:after, .subnav:after, #content:after, #content .content-header:after, #header:after, #footer:after, li#version_content_input .wysiwyg .toolbar:after, body.landing_page_new_design section#main-description:after, body.landing_page_new_design section#tour section#setup:after, body.landing_page_new_design section#tour section#edit:after {
   clear: both; }
 
 /* Fix clearfix: blueprintcss.lighthouseapp.com/projects/15318/tickets/5-extra-margin-padding-bottom-of-page */
-.clearfix, .subnav, #content, #content .content-header, #header, #header #new-project, #footer, li#version_content_input .wysiwyg .toolbar, body.landing_page_new_design section#main-description, body.landing_page_new_design section#tour section#setup, body.landing_page_new_design section#tour section#edit {
+.clearfix, .subnav, #content, #content .content-header, #header, #footer, li#version_content_input .wysiwyg .toolbar, body.landing_page_new_design section#main-description, body.landing_page_new_design section#tour section#setup, body.landing_page_new_design section#tour section#edit {
   zoom: 1; }
 
 .ie7 img {
@@ -928,40 +928,6 @@ body.projects-new li.projects a {
       height: 57px;
       text-indent: -9999px;
       width: 228px; }
-  #header #new-project {
-    display: block;
-    float: right;
-    list-style: none;
-    margin-bottom: 0;
-    position: absolute;
-    right: 0;
-    top: 10px;
-    z-index: 100; }
-    #header #new-project a {
-      -webkit-border-radius: 5px;
-      -moz-border-radius: 5px;
-      -ms-border-radius: 5px;
-      -o-border-radius: 5px;
-      border-radius: 5px;
-      -webkit-box-shadow: 0 2px 6px #b6b6b6;
-      -moz-box-shadow: 0 2px 6px #b6b6b6;
-      -ms-box-shadow: 0 2px 6px #b6b6b6;
-      -o-box-shadow: 0 2px 6px #b6b6b6;
-      box-shadow: 0 2px 6px #b6b6b6;
-      background: #fff;
-      background: url("/images/create_a_project.png") center 14px no-repeat, -moz-linear-gradient(0% 100% 90deg, #d3dee2, white);
-      background: url("/images/create_a_project.png") center 14px no-repeat, -webkit-gradient(linear, 0% 0%, 0% 100%, from(white), to(#d3dee2));
-      border: 1px solid #bbbbbb;
-      border-top: 1px solid #d4d4d4;
-      border-bottom: 1px solid #959595;
-      display: block;
-      height: 50px;
-      margin: 0 auto;
-      text-indent: -5000px;
-      width: 240px; }
-      #header #new-project a:hover {
-        background: url("/images/create_a_project.png") center 14px no-repeat, -moz-linear-gradient(0% 100% 90deg, #d3dee2, #f4f7f9);
-        background: url("/images/create_a_project.png") center 14px no-repeat, -webkit-gradient(linear, 0% 0%, 0% 100%, from(#f4f7f9), to(#d3dee2)); }
 
 #footer {
   color: #3a4c53;
