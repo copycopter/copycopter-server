@@ -24,7 +24,7 @@ Setup
 Creating a Project
 ------------------
 
-    rake NAME=Crowdtap USERNAME=Constantine PASSWORD=Mavromoustakos
+    rake copycopter:create_project NAME=Crowdtap USERNAME=Constantine PASSWORD=Mavromoustakos
 
 Development
 -----------
