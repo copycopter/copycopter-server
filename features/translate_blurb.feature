@@ -40,3 +40,11 @@ Feature: translate blurbs
     When I follow "Locale: en"
     And I follow "es"
     Then the "Content" field should contain "hola"
+
+  Scenario: While editing blurbs, the correct locale should be selected
+    When I follow "View all"
+    And I follow "one"
+    Then the "en" locale should be selected
+    When I follow "Locale: en"
+    And I follow "es"
+    Then the "es" locale should be selected
