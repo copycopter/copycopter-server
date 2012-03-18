@@ -16,7 +16,7 @@ published.
 Setup
 -----
 
-    git clone git@github.com:copycopter/copycopter-server.git
+    git clone git://github.com/copycopter/copycopter-server.git
     cd copycopter-server
 
 Deploy
