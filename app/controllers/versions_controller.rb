@@ -21,6 +21,6 @@ class VersionsController < ApplicationController
     @localization = Localization.find(params[:localization_id])
     @version = @localization.revise
     @project = @localization.project
-    @locale = @project.locale
+    @locale = @project.locale(@localization.locale_id)
   end
 end
