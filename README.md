@@ -1,5 +1,6 @@
 Copycopter
 ==========
+[![Build Status](https://secure.travis-ci.org/crowdtap/copycopter.server.png)](http://travis-ci.org/crowdtap/copycopter.server)
 
 Copycopter is a service for editing the copy text of a Rails application.
 
