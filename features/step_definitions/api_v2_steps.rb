@@ -1,16 +1,16 @@
-When /^I GET the v2 API URI for "([^"]*)" draft blurbs( with a hierarchy param)?$/ do |project_name, hierarchy|
+When /^I GET the v2 API URI for "([^"]*)" draft blurbs( with a "([^"]*)" param)?$/ do |project_name, skip, param|
   project = Project.find_by_name!(project_name)
-  if hierarchy
-    get_with_etag "/api/v2/projects/#{project.api_key}/draft_blurbs?format=hierarchy"
+  if param
+    get_with_etag "/api/v2/projects/#{project.api_key}/draft_blurbs?#{param}"
   else
     get_with_etag "/api/v2/projects/#{project.api_key}/draft_blurbs"
   end
 end
 
-When /^I GET the v2 API URI for "([^"]*)" published blurbs( with a hierarchy param)?$/ do |project_name, hierarchy|
+When /^I GET the v2 API URI for "([^"]*)" published blurbs( with a "([^"]*)" param)?$/ do |project_name, skip, param|
   project = Project.find_by_name!(project_name)
-  if hierarchy
-    get_with_etag "/api/v2/projects/#{project.api_key}/published_blurbs?format=hierarchy"
+  if param
+    get_with_etag "/api/v2/projects/#{project.api_key}/published_blurbs?#{param}"
   else
     get_with_etag "/api/v2/projects/#{project.api_key}/published_blurbs"
   end
@@ -59,3 +59,8 @@ Then /^I should receive the following JSON response:$/ do |string|
   actual_result = JSON.parse(page.source)
   actual_result.should == JSON.parse(string)
 end
+
+Then /^the response should be wrapped in a "([^"]*)" callback function$/ do |callback_function|
+  page.source =~ /^#{callback_function}/
+end
+
