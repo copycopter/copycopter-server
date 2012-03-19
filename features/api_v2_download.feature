@@ -60,7 +60,7 @@ Feature: Download blurbs for a project through API
       | en.test.one | expected one |
       | en.test.two | expected two |
     And I POST the v2 API URI for "Breakfast" deploys
-    When I GET the v2 API URI for "Breakfast" published blurbs with a hierarchy param
+    When I GET the v2 API URI for "Breakfast" published blurbs with a "format=hierarchy" param
     Then I should receive a HTTP 200
     And I should receive the following JSON response:
     """
@@ -79,7 +79,7 @@ Feature: Download blurbs for a project through API
     When I POST the v2 API URI for "Breakfast" draft blurbs:
       | en.test.one | expected one |
       | en.test.two | expected two |
-    And I GET the v2 API URI for "Breakfast" draft blurbs with a hierarchy param
+    And I GET the v2 API URI for "Breakfast" draft blurbs with a "format=hierarchy" param
     Then I should receive a HTTP 200
     And I should receive the following JSON response:
     """
@@ -92,3 +92,22 @@ Feature: Download blurbs for a project through API
         }
       }
     """
+
+    Scenario: download published blurbs with a json hieratchy for a known project
+      Given a project exists with a name of "Breakfast"
+      When I POST the v2 API URI for "Breakfast" draft blurbs:
+        | en.test.one | expected one |
+        | en.test.two | expected two |
+      And I POST the v2 API URI for "Breakfast" deploys
+      When I GET the v2 API URI for "Breakfast" published blurbs with a "callback=jsonp" param
+      Then I should receive a HTTP 200
+      And the response should be wrapped in a "jsonp" callback function
+
+    Scenario: download draft blurbs with a json hieratchy for a known project
+      Given a project exists with a name of "Breakfast"
+      When I POST the v2 API URI for "Breakfast" draft blurbs:
+        | en.test.one | expected one |
+        | en.test.two | expected two |
+      When I GET the v2 API URI for "Breakfast" draft blurbs with a "callback=jsonp" param
+      Then I should receive a HTTP 200
+      And the response should be wrapped in a "jsonp" callback function
