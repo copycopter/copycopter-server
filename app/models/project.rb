@@ -115,7 +115,7 @@ class Project < ActiveRecord::Base
   end
 
   def generate_api_key
-    self.api_key = Digest::MD5.hexdigest("#{name}#{Time.now.to_f}")
+    self.api_key = SecureRandom.urlsafe_base64(24)
   end
 
   def generate_json(content)

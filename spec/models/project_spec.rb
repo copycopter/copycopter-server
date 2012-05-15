@@ -260,3 +260,23 @@ describe Project, '.regenerate_caches' do
     project.published_json.should == Yajl::Encoder.encode('en.test.key' => 'value')
   end
 end
+
+describe Project, "api_key" do
+  it "doesn't generate reproducible API keys" do
+    project_name = "your_not_so_secret_project_name"
+    created_at = Time.parse("2012-05-15 5:29PM EDT")
+    project_api_key = get_api_key_for_project(project_name, created_at)
+    attackers_api_key = get_api_key_for_project(project_name, created_at)
+    attackers_api_key.should_not == project_api_key
+  end
+
+  def get_api_key_for_project(name, created_at)
+    api_key = nil
+    Timecop.freeze(created_at) do
+      project = FactoryGirl.create(:project, :name => name)
+      api_key = project.api_key
+      project.delete
+    end
+    api_key
+  end
+end
