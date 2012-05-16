@@ -115,7 +115,7 @@ class Project < ActiveRecord::Base
   end
 
   def generate_api_key
-    self.api_key = SecureRandom.urlsafe_base64(24)
+    self.api_key = SecureRandom.hex(24)
   end
 
   def generate_json(content)
