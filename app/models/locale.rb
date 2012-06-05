@@ -6,7 +6,7 @@ class Locale < ActiveRecord::Base
   validates_uniqueness_of :key, :scope => :project_id
 
   def self.enabled_in_order
-    enabled.order 'key ASC'
+    enabled.order 'locales.key ASC'
   end
 
   def self.first_enabled
