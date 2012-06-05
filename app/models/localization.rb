@@ -34,10 +34,18 @@ class Localization < ActiveRecord::Base
   end
 
   def self.latest_version
-    <<-eosql
+    # https://github.com/copycopter/copycopter-server/issues/64#issuecomment-5836709
+    if ActiveRecord::Base.connection_config[:adapter].include? "mysql"
+      <<-eosql
+      SELECT DISTINCT localization_id, id, content
+        FROM versions ORDER BY localization_id DESC, id DESC
+      eosql
+    else 
+      <<-eosql
       SELECT DISTINCT ON (localization_id) localization_id, id, content
         FROM versions ORDER BY localization_id DESC, id DESC
-    eosql
+      eosql
+    end
   end
 
   def next_version_number
@@ -49,17 +57,32 @@ class Localization < ActiveRecord::Base
   end
 
   def self.publish
-    ActiveRecord::Base.connection.execute <<-eosql
-      UPDATE localizations
-        SET published_version_id = latest_version.id,
-        published_content = latest_version.content,
-        updated_at = '#{connection.quoted_date(Time.now)}'
-      FROM (
-          #{latest_version}
-        ) AS latest_version
-      WHERE latest_version.localization_id = localizations.id
-      AND localizations.id IN (#{scoped.map(&:id).join(',')});
-    eosql
+    # https://github.com/copycopter/copycopter-server/issues/64#issuecomment-5836709
+    if ActiveRecord::Base.connection_config[:adapter].include? "mysql"
+      ActiveRecord::Base.connection.execute <<-eosql
+        UPDATE localizations
+          INNER JOIN (
+            #{latest_version}
+          ) latest_version 
+        ON localizations.id = latest_version.localization_id
+          SET published_version_id = latest_version.id,
+              published_content = latest_version.content,
+              updated_at = '#{connection.quoted_date(Time.now)}'
+              WHERE localizations.id IN (#{scoped.map(&:id).join(',')});
+      eosql
+    else
+      ActiveRecord::Base.connection.execute <<-eosql
+        UPDATE localizations
+          SET published_version_id = latest_version.id,
+          published_content = latest_version.content,
+          updated_at = '#{connection.quoted_date(Time.now)}'
+        FROM (
+            #{latest_version}
+          ) AS latest_version
+        WHERE latest_version.localization_id = localizations.id
+        AND localizations.id IN (#{scoped.map(&:id).join(',')});
+      eosql
+    end
   end
 
   def publish
