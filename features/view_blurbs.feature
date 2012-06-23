@@ -18,7 +18,3 @@ Feature: View blurbs
     And I should see "blah la"
     And I should see "this is a very long bunch of words"
     And no visible elements should contain "View all"
-    When I fill in "Search" with "anything"
-    And I clear the "Search" field
-    Then a visible element should contain "View all"
-

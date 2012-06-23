@@ -1,0 +1,176 @@
+ol {
+  
+}
+li {
+  
+  &#version_published_input {
+    float: left;
+    width: 160px;
+    margin-top: 10px;
+  }
+  
+  &.explanation {
+    float: left; 
+    width: 438px;
+  }
+  
+  &#version_content_input {
+    background:#eaeaea;
+    border: 1px solid #959595;
+    border-bottom: 0;
+    padding: 8px;
+    margin-bottom: 0;
+    width: 580px;
+    clear: left;
+    @include box-shadow(inset 0 0 5px #e9e9e9);
+
+    .wysiwyg {
+      margin: 0;
+      border: 1px solid #ababab;
+      position: relative;
+      height: 254px;
+
+      .toolbar {
+        margin: 0;
+        background: #f3f3f3;
+        border-bottom: 1px solid #e3e3e3;
+        width: 547px;
+        padding: 10px 15px;
+        list-style: none;
+        @extend .clearfix;
+
+        li {
+          float: left;
+          margin: 0 20px 0 0;
+          font-style: italic;
+          color: #848484;
+          font-size: 12px;
+          padding-left: 12px;
+          cursor: pointer;
+
+          &.bold {
+            background: image-url('wysiwyg/bold.png') 0 center no-repeat;
+          }
+
+          &.italic {
+            background: image-url('wysiwyg/italic.png') 0 center no-repeat;
+          }
+
+          &.insertUnorderedList {
+            background: image-url('wysiwyg/list.png') 0 center no-repeat;
+            padding-left: 16px;
+          }
+        }
+      }
+    }
+
+    textarea {
+      width: 548px;
+      height: 224px;
+      background: #fff image-url('textarea-bg.jpg') repeat-x 0 0;
+      padding: 15px;
+      margin-bottom: -5px;
+      border: 1px solid #ababab;
+    }
+
+    label {
+      display: none;
+    }
+
+    iframe {
+      width: 577px;
+      height: 217px;
+    }
+  }
+
+  &#editor_mode {
+    text-align: right;
+    background: #eaeaea;
+    border: 1px solid #959595;
+    border-top: 0;
+    padding: 0 8px 8px;
+
+    a {
+      color: #575757;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+}
+
+#version_published_input {
+  fieldset {
+    background: none;
+  }
+
+  legend {
+    display: none;
+  }
+
+  ol {
+    overflow: hidden;
+
+    li {
+      display: block;
+      float: left;
+      margin-right: 20px;
+      margin-bottom: 0;
+      margin-top: -5px;
+
+      label {
+        width: auto;
+      }
+    }
+  }
+}
+
+#versions {
+ margin-bottom: 20px;
+ overflow: hidden;
+
+  #version_history_toggle {
+    display: block;
+    background: image-url('clock.png') no-repeat 0 50%;
+    padding-left: 20px;
+    float: right;
+  }
+
+  #versions_form {
+    clear: both;
+    padding-top: 20px;
+
+    table {
+      border: 1px solid #ffeabf;
+      margin: 0;
+      font-size: 12px;
+
+      th {
+        background: #fffbb8;
+        border: 0;
+        border-bottom: 1px solid #fad498;
+        font-weight: normal;
+        padding: 10px;
+      }
+
+
+      td {
+        background: #fffde1;
+        border: 0;
+        border-bottom: 1px solid #ffeabf;
+        padding: 10px;
+
+        a, a:link {
+          color: #67471e;
+
+          &:hover {
+            color:#2b1902;
+          }
+        }
+      }
+    }
+  }
+}
+

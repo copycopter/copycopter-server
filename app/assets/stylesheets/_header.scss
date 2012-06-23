@@ -1,0 +1,19 @@
+#header {
+  @extend .clearfix;
+  position:relative;
+
+  h1#logo {
+    float: left;
+    left: -30px;
+    margin: 10px 0 0 0;
+    position: relative;
+
+    a, a:link {
+      background: image-url('copycopter.png') no-repeat 0 0;
+      display: block;
+      height: 57px;
+      text-indent:-9999px;
+      width: 228px;
+    }
+  }
+}

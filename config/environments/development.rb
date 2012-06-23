@@ -5,4 +5,6 @@ Copycopter::Application.configure do
   config.cache_classes = false
   config.consider_all_requests_local = true
   config.whiny_nils = true
+  config.assets.compress = false
+  config.assets.debug = true
 end

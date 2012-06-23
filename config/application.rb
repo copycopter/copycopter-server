@@ -1,12 +1,9 @@
 require File.expand_path('../boot', __FILE__)
 
-require 'rails'
-require 'active_record/railtie'
-require 'action_controller/railtie'
-require 'rails/test_unit/railtie'
+require 'rails/all'
 
 if defined? Bundler
-  Bundler.require :default, Rails.env
+  Bundler.require *Rails.groups(:assets => %w(development test))
 end
 
 module Copycopter
@@ -16,6 +13,9 @@ module Copycopter
     config.eager_load_paths += %w(lib)
     config.encoding = 'utf-8'
     config.filter_parameters += [:password]
+    config.assets.enabled = true
+    config.assets.version = '1.0'
+    config.assets.initialize_on_precompile = false
 
     config.generators do |generate|
       generate.test_framework :rspec

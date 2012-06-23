@@ -2,3 +2,4 @@ db/schema.rb
 log/*.log
 vendor/cache
 .rvmrc
+tmp/**/*

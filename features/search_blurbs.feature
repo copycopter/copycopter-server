@@ -27,7 +27,6 @@ Feature: Blurb Search
     And no visible elements should contain "test.miss.this"
     When I clear the "Search" field
     Then no visible elements should contain "find"
-    And a visible element should contain "View all"
 
   @javascript
   Scenario: Perform a search with no results
@@ -39,6 +38,5 @@ Feature: Blurb Search
     When I type "find" into "Search"
     Then a visible element should contain "No results"
     When I clear the "Search" field
-    Then no visible elements should contain "No results"
-    When I type "test" into "Search"
+    And I type "test" into "Search"
     Then no visible elements should contain "No results"
