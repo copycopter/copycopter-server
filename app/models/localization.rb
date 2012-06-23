@@ -29,6 +29,10 @@ class Localization < ActiveRecord::Base
     where :locale_id => locale.id
   end
 
+  def self.in_locale_with_blurb(locale)
+    includes(:blurb).in_locale(locale).ordered
+  end
+
   def latest_version
     versions.last
   end
