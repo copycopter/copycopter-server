@@ -10,7 +10,7 @@ class ProjectsController < ApplicationController
     @locale = @project.locale(params[:locale_id])
 
     if stale? :etag => @project.etag
-      @localizations = @project.localizations.in_locale(@locale).ordered
+      @localizations = @project.localizations.includes(:blurb).in_locale(@locale).ordered
     end
   end
 
