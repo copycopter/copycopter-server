@@ -30,7 +30,18 @@ Deploy Copycopter Server like any other Rails app. Heroku example:
     git push heroku master
     heroku run rake db:migrate
     heroku restart
+
+Adding a Project
+----------------
+
     heroku run rake copycopter:project NAME=Iora USERNAME=Copy PASSWORD=Copter
+
+Removing a Project
+------------------
+
+To remove a project from Copycopter:
+
+    heroku run rake copycopter:remove_project NAME=Iora
 
 Contribute
 ----------
