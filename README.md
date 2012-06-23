@@ -36,6 +36,11 @@ Adding a Project
 
     heroku run rake copycopter:project NAME=Iora USERNAME=Copy PASSWORD=Copter
 
+Updating a Projects password
+----------------------------
+
+    heroku run rake copycopter:change_project_password NAME=IORA OLD=Copter NEW=COPTAH
+
 Removing a Project
 ------------------
 
