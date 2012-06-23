@@ -11,13 +11,13 @@ class Api::V2::BaseController < ActionController::Metal
     @current_project ||= Project.find_by_api_key!(params[:project_id])
   end
 
-  rescue_from ActiveRecord::RecordNotFound, :with => :missing_project
+  rescue_from ActiveRecord::RecordNotFound, with: :missing_project
 
   private
 
   def missing_project
-    render :json  => {
+    render json: {
       'error' => 'No project was found with the given API key.'
-    }, :status => :not_found
+    }, status: :not_found
   end
 end
