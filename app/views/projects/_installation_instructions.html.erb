@@ -9,7 +9,8 @@
 
     <li>
       Put this in your config/initializers/copycopter.rb:
-      <pre><%= render 'projects/copycopter.rb.erb', :project => project %></pre>
+      <% self.formats = [:html, :rb] %>
+      <pre><%= render :partial => 'projects/copycopter', :locals => {:project => project} %></pre>
     </li>
   </ol>
 </div>

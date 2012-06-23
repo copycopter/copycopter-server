@@ -28,7 +28,7 @@
 
     <%= link_to project_blurb_path(@project, @localization.blurb),
           :method => :delete,
-          :confirm => 'Delete blurb?',
+          :data => { :confirm => 'Delete blurb?' },
           :id => 'remove_blurb' do %>
       <span class='delete_item'>Remove blurb</span>
     <% end -%>
