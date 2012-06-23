@@ -4,7 +4,7 @@ When /^I make the following revisions:$/ do |table|
     locale = Locale.find_by_key!(locale_key)
     blurb = Blurb.find_by_key!(blurb_key)
     localization = blurb.localizations.find_by_locale_id!(locale.id)
-    localization.revise(:content => content, :published => false).save!
+    localization.revise(content: content, published: false).save!
   end
 end
 
@@ -14,7 +14,7 @@ Given /^the following localizations exist in the "([^"]+)" project:$/ do |projec
   table.hashes.each do |hash|
     blurb = project.blurbs.find_or_create_by_key(hash.delete('key'))
     locale = project.locales.find_or_create_by_key(hash.delete('locale') || 'en')
-    Factory :localization, hash.merge(:blurb => blurb, :locale => locale)
+    Factory :localization, hash.merge(blurb: blurb, locale: locale)
   end
 end
 
@@ -24,8 +24,8 @@ Given /^the following blurb is published:$/ do |table|
     published_content = hash['content'] || ''
     locale = project.locales.find_or_create_by_key(hash['locale'] || 'en')
     blurb = project.blurbs.find_or_create_by_key(hash['key'] || Factory.next(:key))
-    Factory(:localization, :blurb => blurb, :locale => locale,
-      :draft_content => published_content).publish
+    Factory(:localization, blurb: blurb, locale: locale,
+      draft_content: published_content).publish
   end
 end
 

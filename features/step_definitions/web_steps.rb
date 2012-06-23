@@ -38,13 +38,13 @@ end
 
 When /^(?:|I )fill in "([^"]*)" with "([^"]*)"(?: within "([^"]*)")?$/ do |field, value, selector|
   with_scope(selector) do
-    fill_in field, :with => value
+    fill_in field, with: value
   end
 end
 
 When /^(?:|I )fill in "([^"]*)" for "([^"]*)"(?: within "([^"]*)")?$/ do |value, field, selector|
   with_scope(selector) do
-    fill_in field, :with => value
+    fill_in field, with: value
   end
 end
 
@@ -69,7 +69,7 @@ end
 
 When /^(?:|I )select "([^"]*)" from "([^"]*)"(?: within "([^"]*)")?$/ do |value, field, selector|
   with_scope(selector) do
-    select value, :from => field
+    select value, from: field
   end
 end
 
@@ -98,8 +98,8 @@ When /^(?:|I )attach the file "([^"]*)" to "([^"]*)"(?: within "([^"]*)")?$/ do 
 end
 
 Then /^(?:|I )should see JSON:$/ do |expected_json|
-  expected = Yajl::Encoder.encode(Yajl::Parser.parse(expected_json), :pretty => true)
-  actual = Yajl::Encoder.encode(Yajl::Parser.parse(response.body), :pretty => true)
+  expected = Yajl::Encoder.encode(Yajl::Parser.parse(expected_json), pretty: true)
+  actual = Yajl::Encoder.encode(Yajl::Parser.parse(response.body), pretty: true)
   expected.should == actual
 end
 
