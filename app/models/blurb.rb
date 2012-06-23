@@ -4,7 +4,7 @@ class Blurb < ActiveRecord::Base
   include HTMLDiff
 
   # Associations
-  has_many :localizations, :dependent => :destroy
+  has_many :localizations, dependent: :destroy
   belongs_to :project
 
   # Validations
@@ -33,7 +33,7 @@ class Blurb < ActiveRecord::Base
       result.deep_merge!({ locale_key => create_hierarchichal_hash_from_array(keys + [content]) })
     end
 
-    { :data => data, :hierarchichal_data => hierarchichal_data }
+    { data: data, hierarchichal_data: hierarchichal_data }
   end
 
   def self.keys

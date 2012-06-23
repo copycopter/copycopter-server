@@ -6,28 +6,27 @@ class Project < ActiveRecord::Base
 
   # Associatons
   has_many :blurbs
-  belongs_to :draft_cache, :class_name => 'TextCache', :dependent => :destroy
-  has_many :locales, :dependent => :delete_all
-  has_many :localizations, :through => :blurbs
-  belongs_to :published_cache, :class_name => 'TextCache',
-    :dependent => :destroy
+  belongs_to :draft_cache, class_name: 'TextCache', dependent: :destroy
+  has_many :locales, dependent: :delete_all
+  has_many :localizations, through: :blurbs
+  belongs_to :published_cache, class_name: 'TextCache', dependent: :destroy
 
   # Validations
   validates_presence_of :api_key, :name, :password, :username
   validates_uniqueness_of :api_key
 
   # Callbacks
-  before_validation :generate_api_key, :on => :create
+  before_validation :generate_api_key, on: :create
   before_create :create_caches
   after_create :create_english_locale
   after_destroy :delete_localizations_and_blurbs
 
   def self.archived
-    where :archived => true
+    where archived: true
   end
 
   def self.active
-    where :archived => false
+    where archived: false
   end
 
   def active?
@@ -51,7 +50,7 @@ class Project < ActiveRecord::Base
     update_caches
   end
 
-  def draft_json(options = { :hierarchy => false })
+  def draft_json(options = { hierarchy: false })
     if options[:hierarchy]
       draft_cache.hierarchichal_data
     else
@@ -75,7 +74,7 @@ class Project < ActiveRecord::Base
     "project-#{id}-create-defaults"
   end
 
-  def published_json(options = { :hierarchy => false })
+  def published_json(options = { hierarchy: false })
     if options[:hierarchy]
       published_cache.hierarchichal_data
     else
@@ -103,14 +102,14 @@ class Project < ActiveRecord::Base
   end
 
   def create_english_locale
-    locales.create! :key => 'en'
+    locales.create! key: 'en'
   end
 
   def delete_localizations_and_blurbs
     transaction do
-      blurb_ids = Blurb.select('id').where(:project_id => self.id).map(&:id)
-      Localization.where(:blurb_id => blurb_ids).delete_all
-      Blurb.where(:project_id => self.id).delete_all
+      blurb_ids = Blurb.select('id').where(project_id: self.id).map(&:id)
+      Localization.where(blurb_id: blurb_ids).delete_all
+      Blurb.where(project_id: self.id).delete_all
     end
   end
 

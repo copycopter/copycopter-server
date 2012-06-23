@@ -1,6 +1,6 @@
 class Locale < ActiveRecord::Base
   belongs_to :project
-  has_many :localizations, :dependent => :destroy
+  has_many :localizations, dependent: :destroy
 
   validates_presence_of :key, :project_id
   validates_uniqueness_of :key, :scope => :project_id
@@ -16,6 +16,6 @@ class Locale < ActiveRecord::Base
   private
 
   def self.enabled
-    where :enabled => true
+    where enabled: true
   end
 end

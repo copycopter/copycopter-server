@@ -38,7 +38,7 @@ class DefaultCreator
     end
 
     new_locale_keys.each do |locale_key|
-      new_locale = project.locales.create!(:key => locale_key)
+      new_locale = project.locales.create!(key: locale_key)
       @locales[locale_key] = new_locale
 
       @blurbs.each do |blurb|
@@ -60,7 +60,7 @@ class DefaultCreator
   end
 
   def create_localization(blurb, locale, content)
-    blurb.localizations.create! :locale => locale, :draft_content => content
+    blurb.localizations.create! locale: locale, draft_content: content
     content
   end
 
@@ -97,7 +97,7 @@ class DefaultCreator
   def find_localized_defaults
     scope = Localization.
       joins(:blurb).
-      where(:blurbs => { :project_id => project.id }).
+      where(blurbs: { project_id: project.id }).
       select('localizations.locale_id, localizations.blurb_id, localizations.draft_content')
       @localized_defaults = connection.select_rows(scope.to_sql).inject({}) do |result, (locale_id, blurb_id, content)|
       result.update blurb_id.to_i => (result[blurb_id.to_i] || {}).update(locale_id.to_i => content)
@@ -105,7 +105,7 @@ class DefaultCreator
   end
 
   def find_or_create_blurb(key)
-    @blurbs[key] ||= project.blurbs.create!(:key => key)
+    @blurbs[key] ||= project.blurbs.create!(key: key)
   end
 
   def localize_blurb(blurb, locale, content)

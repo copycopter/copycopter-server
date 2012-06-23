@@ -1,7 +1,7 @@
 class Localization < ActiveRecord::Base
   belongs_to :blurb
   belongs_to :locale
-  belongs_to :published_version, :class_name => 'Version'
+  belongs_to :published_version, class_name: 'Version'
   has_many :versions
 
   validates_presence_of :blurb_id, :locale_id
@@ -9,12 +9,12 @@ class Localization < ActiveRecord::Base
   after_create :create_first_version
 
   def alternates
-    blurb.localizations.joins(:locale).where(:locales => { :enabled => true }).
+    blurb.localizations.joins(:locale).where(locales: { enabled: true }).
       order 'locales.key'
   end
 
   def as_json(options = nil)
-    super :only => [:id, :draft_content], :methods => [:key]
+    super only: [:id, :draft_content], methods: [:key]
   end
 
   def key
@@ -26,7 +26,7 @@ class Localization < ActiveRecord::Base
   end
 
   def self.in_locale(locale)
-    where :locale_id => locale.id
+    where locale_id: locale.id
   end
 
   def self.in_locale_with_blurb(locale)
@@ -67,7 +67,7 @@ class Localization < ActiveRecord::Base
   end
 
   def publish
-    self.class.where(:id => self.id).publish
+    self.class.where(id: self.id).publish
     reload
   end
 
@@ -82,7 +82,7 @@ class Localization < ActiveRecord::Base
   private
 
   def create_first_version
-    versions.build(:content => draft_content).tap do |version|
+    versions.build(content: draft_content).tap do |version|
       version.number = 1
       version.save!
     end

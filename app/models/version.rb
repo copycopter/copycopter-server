@@ -9,7 +9,7 @@ class Version < ActiveRecord::Base
   validates_presence_of :localization_id
 
   # Callbacks
-  before_validation :set_number, :on => :create
+  before_validation :set_number, on: :create
   after_create :update_localization
   after_create :update_project_caches, :unless => :first_version?
 
@@ -54,7 +54,7 @@ class Version < ActiveRecord::Base
 
   def update_localization
     unless first_version?
-      localization.update_attributes! :draft_content => content
+      localization.update_attributes! draft_content: content
     end
 
     if publish_after_saving?
