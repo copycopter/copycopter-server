@@ -21,6 +21,7 @@ li {
     padding: 8px;
     margin-bottom: 0;
     width: 580px;
+    clear: left;
     @include box-shadow(inset 0 0 5px #e9e9e9);
 
     .wysiwyg {
