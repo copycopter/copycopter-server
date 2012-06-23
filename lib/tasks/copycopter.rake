@@ -1,11 +1,11 @@
 namespace :copycopter do
-  task :regenerate_project_caches => :environment do
+  task regenerate_project_caches: :environment do
     Project.regenerate_caches
   end
 
   desc 'Add a project to Copycopter'
-  task :project => :environment do
-    project = Project.new(:name => ENV['NAME'], :password => ENV['PASSWORD'], :username => ENV['USERNAME'])
+  task project: :environment do
+    project = Project.new( name: ENV['NAME'], password: ENV['PASSWORD'], username: ENV['USERNAME'])
 
     if project.save
       puts "Project #{project.name} created!"
@@ -15,8 +15,8 @@ namespace :copycopter do
   end
 
   desc 'Remove the project from Copycopter'
-  task :remove_project => :environment do
-    project = Project.where(:name => ENV['NAME']).first
+  task remove_project: :environment do
+    project = Project.where(name: ENV['NAME']).first
 
     if project.destroy
       puts "Project #{project.name} removed!"
@@ -26,8 +26,8 @@ namespace :copycopter do
   end
 
   desc 'Change the password of a Copycopter Project account'
-  task :change_project_password => :environment do
-    project = Project.where(:name => ENV['NAME']).first
+  task change_project_password: :environment do
+    project = Project.where(name: ENV['NAME']).first
     old_password = project.password
 
     project.password = ENV['NEW']
