@@ -18,4 +18,7 @@ Copycopter::Application.configure do
 
   # Generate digests for assets URLs
   config.assets.digest = true
+
+  # Add the print CSS into the manifest
+  config.assets.precompile += ['wysiwyg.css']
 end
