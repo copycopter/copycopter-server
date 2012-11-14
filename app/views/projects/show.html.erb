@@ -53,6 +53,7 @@
   </script>
 
   <div id='view_all'><a href='#'>View all <%= pluralize(@localizations.size, 'blurb') %></a></div>
+  <div id='view_not_filled'><a href='#'>View Not Filled</a></div>
 
   <% content_for :javascript do -%>
     <script type='text/javascript'>
@@ -76,7 +77,8 @@
           },
           search: ['key', 'draft_content'],
           searchContainter: '#blurb_search',
-          viewAll: '#view_all a'
+          viewAll: '#view_all a',
+          viewNotFilled: '#view_not_filled a'
         });
       });
     </script>
