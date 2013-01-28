@@ -1,8 +1,15 @@
-development: &default
+connection: &connection
+  username: postgres
+  password: postgres
   adapter: postgresql
-  database: copycopter_development
+  encoding: utf8
+  host: localhost
   min_messages: WARNING
 
-test: &test
-  <<: *default
+development:
+  database: copycopter_development
+  <<: *connection
+
+test:
   database: copycopter_test
+  <<: *connection
