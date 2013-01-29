@@ -1,5 +1,6 @@
 source :rubygems
 
+gem 'therubyracer'
 gem 'dynamic_form', '1.1.4'
 gem 'flutie', '1.3.3'
 gem 'bourbon', '2.1.0'
@@ -15,7 +16,7 @@ group :assets do
   gem 'sass-rails', "~> 3.2.5"
   gem 'coffee-rails', "~> 3.2.1"
   gem 'uglifier'
-  gem "yui-compressor"
+  gem 'yui-compressor'
 end
 
 
