@@ -38,7 +38,7 @@ Editor = {
       $('.explanation').html(options.draftExplanation);
       $('.published').remove();
       $('#version_published_input').show();
-      $('#version_published_false').attr('checked', 'checked');
+      $('#version_published_true').attr('checked', 'checked');
     };
 
     createEditor();
