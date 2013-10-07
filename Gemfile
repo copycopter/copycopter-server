@@ -16,7 +16,6 @@ group :assets do
   gem 'coffee-rails', "~> 3.2.1"
   gem 'uglifier'
   gem "yui-compressor"
-  gem 'therubyracer'
 end
 
 group :development, :test do
