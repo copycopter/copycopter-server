@@ -3,3 +3,4 @@ log/*.log
 vendor/cache
 .rvmrc
 tmp/**/*
+/.bundle
