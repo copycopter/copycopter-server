@@ -7,7 +7,7 @@ gem 'formtastic', '2.0.2'
 gem 'htmldiff', '0.0.1'
 gem 'pg', '0.13.2'
 gem 'rails', '3.2.13'
-gem 'thin'
+gem 'puma'
 gem 'yajl-ruby', '1.1.0', :require => 'yajl'
 gem "jquery-rails", "1.0.19"
 
@@ -16,6 +16,10 @@ group :assets do
   gem 'coffee-rails', "~> 3.2.1"
   gem 'uglifier'
   gem "yui-compressor"
+end
+
+group :development do
+  gem 'mina', github: 'nadarei/mina'  
 end
 
 group :development, :test do
