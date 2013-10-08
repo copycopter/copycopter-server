@@ -64,55 +64,33 @@ task :deploy => :environment do
   end
 end
 
-namespace :logs do
-  desc 'tail -f log/env.log'
-  task :tail do
-    queue %Q[echo "-----> Tail for #{rails_env}.log"]
-    queue echo_cmd %[cd #{deploy_to}/#{current_path}; tail -f log/#{rails_env}.log && exit]
-  end
-
-  task :show do
-    n = ENV['n'] || 15
-    queue %Q[echo "----->  Last #{n} lines of #{rails_env}.log"]
-    queue echo_cmd %[cd #{deploy_to}/#{current_path}; tail -n#{n} log/#{rails_env}.log && exit]
-  end
-end
 
 namespace :puma do
   desc 'Start puma'
-  taks :start do
-    queue 'excho "-----> Starting Puma"'
+  task :start do
+    queue 'echo "-----> Starting puma"'
     queue! %{
-      echo #{rails_env}
-      echo #{release_path}
       cd #{deploy_to}/current
-      #{bundle_exec} puma -C #{deploy_to}/current/config/puma.rb -E #{rails_env} -D
+      #{bundle_exec} pumactl -S #{deploy_to}/shared/sockets/puma.state --config config/puma.rb start
     }
   end
-
+ 
   desc 'Stop puma'
   task :stop do 
-    queue 'echo "-----> Stopping Puma"'
+    queue 'echo "-----> Stopping puma"'
     queue! %{
-      test -s "#{pid_file}" && kill -QUIT `cat "#{pid_file}"` && echo "Stop Ok" && exit 0
+      pumactl -S #{deploy_to}/shared/sockets/puma.state stop && echo "Stop Ok" && exit 0
       echo >&2 "Not running"
     } 
   end
-
+ 
   desc "Restart puma gracefully"
   task :restart => :environment do
-    queue 'echo "-----> Restarting Puma"'
+    queue 'echo "-----> Restarting puma"'
     queue! %{
-      echo `cat "#{pid_file}"`
-      test -s "#{pid_file}" && kill -USR2 `cat "#{pid_file}"` && echo "Restart Ok" && exit 0
+      echo `cat "#{puma_pid}"`
+      pumactl -S #{deploy_to}/shared/sockets/puma.state phased-restart && echo "Restart Ok" && exit 0
       echo >&2 "Restarted."
     } 
   end
 end
-# For help in making your deploy script, see the Mina documentation:
-#
-#  - http://nadarei.co/mina
-#  - http://nadarei.co/mina/tasks
-#  - http://nadarei.co/mina/settings
-#  - http://nadarei.co/mina/helpers
-
