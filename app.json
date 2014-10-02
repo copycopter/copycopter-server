@@ -9,10 +9,7 @@
   "repository": "https://github.com/copycopter/copycopter-server",
   "logo": "http://copycopter.com/images/home/copycopter-logo.png",
   "scripts": {
-    "postdeploy": [
-      "bundle exec rake db:migrate",
-      "bundle exec rake copycopter:project NAME=$PROJECT_NAME USERNAME=$PROJECT_USERNAME PASSWORD=$PROJECT_PASSWORD"
-    ]
+    "postdeploy": "bundle exec rake db:migrate && bundle exec rake copycopter:project NAME=$PROJECT_NAME USERNAME=$PROJECT_USERNAME PASSWORD=$PROJECT_PASSWORD"
   },
   "env": {
     "RAILS_ENV": "production",
