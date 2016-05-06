@@ -1,7 +1,13 @@
 Copycopter
 ==========
-
 [![Build Status](https://secure.travis-ci.org/copycopter/copycopter-server.png)](http://travis-ci.org/copycopter/copycopter-server)
+
+ABANDONED
+=========
+This software is no longer being maintained.
+
+Description
+-----------
 
 Copycopter is a service for editing the copy text of a Rails application.
 
