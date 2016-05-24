@@ -1,6 +1,7 @@
 Copycopter
 ==========
 [![Build Status](https://secure.travis-ci.org/copycopter/copycopter-server.png)](http://travis-ci.org/copycopter/copycopter-server)
+[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
 
 ABANDONED
 =========

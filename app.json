@@ -1,0 +1,36 @@
+{
+  "name": "Copycopter Server",
+  "description": "Copycopter is a service for editing the copy text of a Rails application",
+  "keywords": [
+    "rails",
+    "i18n"
+  ],
+  "website": "http://copycopter.com/",
+  "repository": "https://github.com/copycopter/copycopter-server",
+  "logo": "http://copycopter.com/images/home/copycopter-logo.png",
+  "scripts": {
+    "postdeploy": "bundle exec rake db:migrate && bundle exec rake copycopter:project NAME=$PROJECT_NAME USERNAME=$PROJECT_USERNAME PASSWORD=$PROJECT_PASSWORD"
+  },
+  "env": {
+    "RAILS_ENV": "production",
+    "COOKIE_SECRET": {
+      "description": "This gets generated",
+      "generator": "secret"
+    },
+    "PROJECT_NAME": {
+      "description": "The name of the first project",
+      "value": "Iora"
+    },
+    "PROJECT_USERNAME": {
+      "description": "The username for the first project",
+      "value": "Copy"
+    },
+    "PROJECT_PASSWORD": {
+      "description": "The password for the first project",
+      "value": "Copter"
+    }
+  },
+  "addons": [
+    "heroku-postgresql"
+  ]
+}
