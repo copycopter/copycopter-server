@@ -2,11 +2,13 @@ $.fn.incrementalSearch = (options) ->
   timeout = undefined
   matchAny = (object, fields, needle) ->
     index = 0
-
-    while index < fields.length
-      return true  unless object[fields[index]].toLowerCase().indexOf(needle) is -1
-      index++
-    false
+    if needle == "!!!NOTFILLED!!!"
+      object["draft_content"] == ""
+    else
+      while index < fields.length
+        return true  unless object[fields[index]].toLowerCase().indexOf(needle) is -1
+        index++
+      false
 
   matchQuery = (object, fields, needles) ->
     index = 0
@@ -33,9 +35,11 @@ $.fn.incrementalSearch = (options) ->
     $(options.noResults).hide()
     if query is ""
       $(options.viewAll).show()
+      $(options.viewNotFilled).show()
       @html ""
     else
       $(options.viewAll).hide()
+      $(options.viewNotFilled).hide()
       searchTerms = query.toLowerCase().split(" ")
       resultCount = renderResults((item) ->
         matchQuery item, options.search, searchTerms
@@ -57,7 +61,15 @@ $.fn.incrementalSearch = (options) ->
   $(options.queryInput).focus removeStart
   $(options.viewAll).click ->
     $(this).hide()
+    $(options.viewNotFilled).hide()
     renderResults()
+    false
+  $(options.viewNotFilled).click ->
+    $(this).hide()
+    $(options.viewAll).hide()
+    renderResults((item) ->
+      matchQuery item, options.search, ["!!!NOTFILLED!!!"]
+    )
     false
 
   return @
