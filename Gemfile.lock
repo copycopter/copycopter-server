@@ -188,7 +188,7 @@ GEM
       multi_json (>= 1.0.2)
     xpath (0.1.4)
       nokogiri (~> 1.3)
-    yajl-ruby (1.1.0)
+    yajl-ruby (1.4.3)
     yui-compressor (0.9.6)
       POpen4 (>= 0.1.4)
 
@@ -220,5 +220,5 @@ DEPENDENCIES
   thin (= 1.3.1)
   timecop (= 0.3.5)
   uglifier
-  yajl-ruby (= 1.1.0)
+  yajl-ruby (= 1.4.3)
   yui-compressor
